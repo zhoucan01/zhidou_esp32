@@ -1,0 +1,31 @@
+idf_component_register( 
+ SRCS
+    "screens/ui_Screen2.c"
+    "screens/ui_Screen3.c"
+    "screens/ui_Screen4.c"
+    "screens/ui_Screen1.c"
+    "ui.c"    
+    "components/ui_comp_hook.c"
+    "ui_helpers.c"
+    "images/ui_img_titilestate_png.c"
+    "images/ui_img_homepage_png.c"
+    "images/ui_img_modeplantmilk_png.c"
+    "images/ui_img_menuclean_png.c"
+    "images/ui_img_menutoufu_png.c"
+    "images/ui_img_process_png.c"
+    "images/ui_img_line_4_png.c"
+    "images/ui_img_plantmilk_png.c"
+    "images/ui_img_tofu_png.c"
+    "images/ui_img_493133332.c"
+    "images/ui_img_cleandeepclean_png.c"
+    "images/ui_img_cleanquickclean_png.c"
+ 
+    INCLUDE_DIRS
+        "."
+
+    REQUIRES
+        lvgl
+    
+)
+
+
