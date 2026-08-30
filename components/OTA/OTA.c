@@ -10,6 +10,7 @@
 #include "cJSON.h"
 #include "esp_app_desc.h"
 #include "esp_err.h"
+#include "esp_heap_caps.h"
 #include "esp_http_client.h"
 #include "esp_log.h"
 #include "esp_ota_ops.h"
@@ -26,12 +27,23 @@ static const char *TAG = "OTA_CORE";
 #define OTA_VERSION_MAX_LEN 32
 #define OTA_HTTP_BUFFER_SIZE 4096
 #define OTA_MIN_FREE_HEAP 30000
+#define OTA_TASK_STACK_SIZE 8192
+#define OTA_VERSION_MONITOR_PERIOD_MS 5000
+#define OTA_BUILD_MARKER "USB_BASELINE"
 
 static char s_product_model[16] = "F1";
 static int s_mp_version_code = 1;
 static int s_device_serial_num = 1;
 static char s_device_id[32] = {0};
 static bool s_ota_check_started;
+static bool s_version_monitor_started;
+
+/* Keep the OTA task stack in internal DRAM. Creating it dynamically after the
+ * UI and communication tasks start can fail because the internal heap is
+ * fragmented. The stack cannot live in PSRAM because OTA flash writes disable
+ * the flash/PSRAM cache temporarily. */
+static StaticTask_t s_ota_task_tcb;
+static StackType_t s_ota_task_stack[OTA_TASK_STACK_SIZE];
 
 typedef struct {
     char *data;
@@ -121,6 +133,38 @@ static const char *current_firmware_version(void)
         return description->version;
     }
     return "unknown";
+}
+
+static void version_monitor_task(void *parameter)
+{
+    (void)parameter;
+
+    while (true) {
+        const esp_partition_t *running = esp_ota_get_running_partition();
+        ESP_LOGI(TAG, "[VERSION MONITOR] version=%s partition=%s marker=%s",
+                 current_firmware_version(),
+                 running ? running->label : "unknown",
+                 OTA_BUILD_MARKER);
+        vTaskDelay(pdMS_TO_TICKS(OTA_VERSION_MONITOR_PERIOD_MS));
+    }
+}
+
+void start_version_monitor(void)
+{
+    if (s_version_monitor_started) {
+        return;
+    }
+
+    BaseType_t result = xTaskCreate(version_monitor_task, "version_monitor", 3072,
+                                    NULL, 1, NULL);
+    if (result != pdPASS) {
+        ESP_LOGE(TAG, "[VERSION MONITOR] Cannot create monitor task");
+        return;
+    }
+
+    s_version_monitor_started = true;
+    ESP_LOGI(TAG, "[VERSION MONITOR] Started, period=%d ms marker=%s",
+             OTA_VERSION_MONITOR_PERIOD_MS, OTA_BUILD_MARKER);
 }
 
 static int compare_versions(const char *v1, const char *v2)
@@ -462,7 +506,8 @@ static void ota_check_task(void *parameter)
 
 done:
     free(response.data);
-    ESP_LOGI(TAG, "[OTA CHECK] task finished");
+    ESP_LOGI(TAG, "[OTA CHECK] task finished; minimum free stack=%u bytes",
+             (unsigned)uxTaskGetStackHighWaterMark(NULL));
     vTaskDelete(NULL);
 }
 
@@ -473,11 +518,18 @@ void start_ota_check(void)
         return;
     }
 
+    size_t internal_free = heap_caps_get_free_size(MALLOC_CAP_INTERNAL);
+    size_t internal_largest = heap_caps_get_largest_free_block(MALLOC_CAP_INTERNAL);
+    ESP_LOGI(TAG, "[OTA CHECK] Creating static task; internal free=%u largest=%u",
+             (unsigned)internal_free, (unsigned)internal_largest);
+
     s_ota_check_started = true;
-    BaseType_t result = xTaskCreate(ota_check_task, "ota_check", 8192, NULL, 5, NULL);
-    if (result != pdPASS) {
+    TaskHandle_t task = xTaskCreateStatic(ota_check_task, "ota_check",
+                                         OTA_TASK_STACK_SIZE, NULL, 5,
+                                         s_ota_task_stack, &s_ota_task_tcb);
+    if (task == NULL) {
         s_ota_check_started = false;
-        ESP_LOGE(TAG, "[OTA CHECK] Cannot create OTA task");
+        ESP_LOGE(TAG, "[OTA CHECK] Cannot create static OTA task");
         return;
     }
     ESP_LOGI(TAG, "[OTA CHECK] Task created after Wi-Fi obtained an IP");

@@ -286,6 +286,9 @@ static int WifiConnSeverCb(uint16_t conn_handle, uint16_t attr_handle,
                 }
                 
                 printf("WiFi SSID saved: %s\n", WiFiName);
+                if (WiFiPassword[0] != '\0') {
+                    WiFiConn();
+                }
                 
             }
             else if(attr_handle == WifiPasswordSeverHandle)
@@ -306,6 +309,9 @@ static int WifiConnSeverCb(uint16_t conn_handle, uint16_t attr_handle,
                     memmove(password, password + 1, len - 1);  // 去掉头部引号
                 }
                 printf("WiFi Password saved: %s\n", WiFiPassword);
+                if (WiFiName[0] != '\0') {
+                    WiFiConn();
+                }
             }
             break;
     }

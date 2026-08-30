@@ -16,6 +16,11 @@ void start_ota_check(void);
  */
 void check_ota_state(void);
 
+/**
+ * @brief 启动周期版本监视日志
+ */
+void start_version_monitor(void);
+
 // ========== 设备信息设置接口 ==========
 /**
  * @brief 设置产品型号

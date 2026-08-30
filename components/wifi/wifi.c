@@ -2,9 +2,16 @@
 #include "wifi.h"
 #include "OTA.h" 
 
+#if __has_include("wifi_credentials.local.h")
+#include "wifi_credentials.local.h"
+#else
+#define WIFI_DEFAULT_SSID ""
+#define WIFI_DEFAULT_PASSWORD ""
+#endif
+
 EventGroupHandle_t WiFiEventGroup;
 
-#define TAG             "wifi"
+#define TAG             "WIFI_CONNECT"
 #define NVS_NAMESPACE   "NVSWifi"
 
 extern char WiFiPassword[66];
@@ -184,7 +191,6 @@ static int GetWifiInfo(void)
         nvs_set_str(WIFIInfHandle,"USRWifissid","");
         nvs_set_str(WIFIInfHandle,"USRWifiPassword","");
         nvs_commit(WIFIInfHandle);
-        nvs_close(WIFIInfHandle);
     }
     
     else{
@@ -192,7 +198,20 @@ static int GetWifiInfo(void)
         nvs_get_str(WIFIInfHandle,"USRWifissid",usrwifissid,&len1);
         nvs_get_str(WIFIInfHandle,"USRWifiPassword",usrwifipassword,&len2);
     }
+
+    if (WIFI_DEFAULT_SSID[0] != '\0' && WIFI_DEFAULT_PASSWORD[0] != '\0') {
+        strncpy(usrwifissid, WIFI_DEFAULT_SSID, sizeof(usrwifissid) - 1);
+        strncpy(usrwifipassword, WIFI_DEFAULT_PASSWORD, sizeof(usrwifipassword) - 1);
+        usrwifissid[sizeof(usrwifissid) - 1] = '\0';
+        usrwifipassword[sizeof(usrwifipassword) - 1] = '\0';
+        nvs_set_str(WIFIInfHandle, "USRWifissid", usrwifissid);
+        nvs_set_str(WIFIInfHandle, "USRWifiPassword", usrwifipassword);
+        nvs_set_i8(WIFIInfHandle, "WifiInfo", 1);
+        nvs_commit(WIFIInfHandle);
+        ESP_LOGI(TAG, "Using local Wi-Fi credentials for SSID: %s", usrwifissid);
+    }
     nvs_close(WIFIInfHandle);
+
     if(usrwifissid[0]==0x00||usrwifipassword[0]==0x00)
     {
         memset(usrwifipassword,0x00,sizeof(usrwifipassword));

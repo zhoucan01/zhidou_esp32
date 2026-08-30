@@ -86,6 +86,7 @@ void app_main(void)
     StorageInit();
     ESP_LOGI("main", "NVS initialized");
     check_ota_state();
+    start_version_monitor();
     BluetoothInit();
     /* BluetoothInit only configures NimBLE. Start its host before any
      * potentially slow UI, LCD, or Wi-Fi initialization. */
@@ -93,13 +94,13 @@ void app_main(void)
     //初始化串口
     ESP_LOGI("main", "Initializing UART");
     uart_init();
+    set_device_info("F1", 0, 1);
     ESP_LOGI("main", "Initializing Wi-Fi");
     WifiInit();
     ESP_LOGI("main", "Initializing buzzer");
     BeepInit();
     ESP_LOGI("main", "Basic peripherals initialized");
     
-    set_device_info("F1", 0, 1);
     esp_log_level_set("NimBLE", ESP_LOG_WARN); 
     esp_log_level_set("wifi", ESP_LOG_WARN);    // 只显示警告及以上
     esp_log_level_set("coexist", ESP_LOG_WARN);
