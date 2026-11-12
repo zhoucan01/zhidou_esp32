@@ -1,0 +1,59 @@
+#ifndef UI_PLANTMILK_ASSETS_H
+#define UI_PLANTMILK_ASSETS_H
+
+#include "ui.h"
+#include "ui_lz4_assets.h"
+
+#define ui_img_pm_1205051221 ui_img_1205051221
+#define ui_img_pm_1408384802 ui_img_1408384802
+#define ui_img_pm_174602179 ui_img_174602179
+#define ui_img_pm_1_png ui_img_1_png
+#define ui_img_pm_2_png ui_img_2_png
+LV_IMG_DECLARE(ui_img_pm_3_png_lz4);
+#define ui_img_pm_3_png ui_img_pm_3_png_lz4
+#define ui_img_pm_back_1_png ui_img_back_high_png
+#define ui_img_pm_back_png ui_img_back_png
+LV_IMG_DECLARE(ui_img_pm_custom_1_png_lz4);
+#define ui_img_pm_custom_1_png ui_img_pm_custom_1_png_lz4
+LV_IMG_DECLARE(ui_img_pm_custom_png_lz4);
+#define ui_img_pm_custom_png ui_img_pm_custom_png_lz4
+#define ui_img_pm_disabled_png ui_img_disabled_png
+#define ui_img_pm_filter_2_png ui_img_filter_2_png
+#define ui_img_pm_filter_png ui_img_filter_png
+#define ui_img_pm_high_png ui_img_high_png
+#define ui_img_pm_homepage_png ui_img_homepage_png
+LV_IMG_DECLARE(ui_img_pm_making_png_lz4);
+#define ui_img_pm_making_png ui_img_pm_making_png_lz4
+#define ui_img_pm_next_png ui_img_next_png
+#define ui_img_pm_normal_png ui_img_normal_png
+LV_IMG_DECLARE(ui_img_pm_nut_1_png_lz4);
+#define ui_img_pm_nut_1_png ui_img_pm_nut_1_png_lz4
+LV_IMG_DECLARE(ui_img_pm_nut_png_lz4);
+#define ui_img_pm_nut_png ui_img_pm_nut_png_lz4
+LV_IMG_DECLARE(ui_img_pm_oat_1_png_lz4);
+#define ui_img_pm_oat_1_png ui_img_pm_oat_1_png_lz4
+LV_IMG_DECLARE(ui_img_pm_oat_png_lz4);
+#define ui_img_pm_oat_png ui_img_pm_oat_png_lz4
+LV_IMG_DECLARE(ui_img_pm_plantmilk_card_1_png_lz4);
+#define ui_img_pm_plantmilk_card_1_png ui_img_pm_plantmilk_card_1_png_lz4
+LV_IMG_DECLARE(ui_img_pm_plantmilk_card_png_lz4);
+#define ui_img_pm_plantmilk_card_png ui_img_pm_plantmilk_card_png_lz4
+LV_IMG_DECLARE(ui_img_pm_plantmilk_volume_usefilter_1_png_lz4);
+#define ui_img_pm_plantmilk_volume_usefilter_1_png ui_img_pm_plantmilk_volume_usefilter_1_png_lz4
+LV_IMG_DECLARE(ui_img_pm_plantmilk_volume_usefilter_png_lz4);
+#define ui_img_pm_plantmilk_volume_usefilter_png ui_img_pm_plantmilk_volume_usefilter_png_lz4
+#define ui_img_pm_previous_png ui_img_previous_png
+LV_IMG_DECLARE(ui_img_pm_progress_2_png_lz4);
+#define ui_img_pm_progress_2_png ui_img_pm_progress_2_png_lz4
+LV_IMG_DECLARE(ui_img_pm_progress_png_lz4);
+#define ui_img_pm_progress_png ui_img_pm_progress_png_lz4
+#define ui_img_pm_ring3_png ui_img_ring3_png
+LV_IMG_DECLARE(ui_img_pm_soy_1_png_lz4);
+#define ui_img_pm_soy_1_png ui_img_pm_soy_1_png_lz4
+LV_IMG_DECLARE(ui_img_pm_soy_png_lz4);
+#define ui_img_pm_soy_png ui_img_pm_soy_png_lz4
+LV_IMG_DECLARE(ui_img_pm_stopping_png_lz4);
+#define ui_img_pm_stopping_png ui_img_pm_stopping_png_lz4
+#define ui_img_pm_wait_png ui_img_wait_png
+
+#endif

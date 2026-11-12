@@ -1,0 +1,11 @@
+{
+  "stages": [
+    {"temperature_below_c": 60, "heater_gear": 19, "heater_on_seconds": 1, "heater_off_seconds": 0, "motor_gear": 1, "motor_on_seconds": 3, "motor_off_seconds": 2},
+    {"temperature_below_c": 80, "heater_gear": 10, "heater_on_seconds": 1, "heater_off_seconds": 0, "motor_gear": 1, "motor_on_seconds": 3, "motor_off_seconds": 2},
+    {"temperature_below_c": 85, "heater_gear": 10, "heater_on_seconds": 6, "heater_off_seconds": 4, "motor_gear": 1, "motor_on_seconds": 3, "motor_off_seconds": 3},
+    {"temperature_below_c": 90, "heater_gear": 9, "heater_on_seconds": 6, "heater_off_seconds": 15, "motor_gear": 1, "motor_on_seconds": 4, "motor_off_seconds": 3},
+    {"temperature_below_c": 93, "heater_gear": 9, "heater_on_seconds": 6, "heater_off_seconds": 4, "motor_gear": 1, "motor_on_seconds": 3, "motor_off_seconds": 3},
+    {"temperature_below_c": 95, "heater_gear": 7, "heater_on_seconds": 5, "heater_off_seconds": 5, "motor_gear": 1, "motor_on_seconds": 3, "motor_off_seconds": 3},
+    {"temperature_below_c": 100, "heater_gear": 7, "heater_on_seconds": 6, "heater_off_seconds": 4, "motor_gear": 1, "motor_on_seconds": 3, "motor_off_seconds": 3}
+  ]
+}

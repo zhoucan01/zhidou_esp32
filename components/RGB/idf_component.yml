@@ -1,0 +1,10 @@
+## IDF Component Manager Manifest File
+##
+## 注意：本项目已通过根 CMakeLists.txt 设置 IDF_COMPONENT_MANAGER=0 关闭组件管理器，
+## 此文件的 dependencies 不再被解析，也不会触发网络访问。
+## esp_lcd_st7796 已作为本地组件存放在 components/esp_lcd_st7796，
+## 依赖关系请在 components/RGB/CMakeLists.txt 的 PRIV_REQUIRES 中声明。
+dependencies:
+  ## Required IDF version
+  idf:
+    version: '>=4.1.0'

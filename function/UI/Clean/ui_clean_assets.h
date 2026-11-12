@@ -1,0 +1,31 @@
+#ifndef UI_CLEAN_ASSETS_H
+#define UI_CLEAN_ASSETS_H
+
+#include "../ui.h"
+
+LV_IMG_DECLARE(ui_img_cl_01_selfclean_checklist_background_280x180_png_lz4);
+LV_IMG_DECLARE(ui_img_cl_03_selfclean_icon_rinse_cream_64x64_png_lz4);
+LV_IMG_DECLARE(ui_img_cl_09_selfclean_icon_rinse_orange_64x64_png_lz4);
+LV_IMG_DECLARE(ui_img_cl_1232396848_lz4);
+LV_IMG_DECLARE(ui_img_cl_1258173808_lz4);
+LV_IMG_DECLARE(ui_img_cl_12_selfclean_icon_parts_64x64_png_lz4);
+LV_IMG_DECLARE(ui_img_cl_14_selfclean_icon_lid_64x64_png_lz4);
+LV_IMG_DECLARE(ui_img_cl_1527058981_lz4);
+LV_IMG_DECLARE(ui_img_cl_17_selfclean_instruction_background_152x180_png_lz4);
+LV_IMG_DECLARE(ui_img_cl_1804218058_lz4);
+LV_IMG_DECLARE(ui_img_cl_2086925163_lz4);
+LV_IMG_DECLARE(ui_img_cl_21_selfclean_icon_rinsing_88x88_png_lz4);
+LV_IMG_DECLARE(ui_img_cl_41988670_lz4);
+LV_IMG_DECLARE(ui_img_cl_448x182_png_lz4);
+LV_IMG_DECLARE(ui_img_cl_449874874_lz4);
+LV_IMG_DECLARE(ui_img_cl_508633414_lz4);
+LV_IMG_DECLARE(ui_img_cl_564171066_lz4);
+LV_IMG_DECLARE(ui_img_cl_67668799_lz4);
+LV_IMG_DECLARE(ui_img_cl_705142925_lz4);
+LV_IMG_DECLARE(ui_img_cl_735058827_lz4);
+LV_IMG_DECLARE(ui_img_cl_808820240_lz4);
+LV_IMG_DECLARE(ui_img_cl_back_1_png_lz4);
+LV_IMG_DECLARE(ui_img_cl_clean_png_lz4);
+LV_IMG_DECLARE(ui_img_cl_group_36_png_lz4);
+
+#endif

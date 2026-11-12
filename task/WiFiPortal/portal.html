@@ -1,0 +1,38 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NUVELL 配网与升级</title><style>
+body{font:16px system-ui,sans-serif;background:#f1f4f8;color:#182238;margin:0;padding:24px}main{max-width:480px;margin:auto}section{background:white;padding:22px;border-radius:16px;margin:18px 0}h1{font-size:25px}h2{font-size:19px}input,button{font:inherit;box-sizing:border-box;width:100%;padding:12px;border:1px solid #cbd2df;border-radius:9px;margin:7px 0}button{background:#235edb;color:white;border:0;cursor:pointer}button:disabled{opacity:.5}label{display:block;margin-top:12px}p{line-height:1.6;overflow-wrap:anywhere}.muted{color:#647086;font-size:14px}progress{width:100%}
+</style><main><h1 id="name">NUVELL</h1><p class="muted">配网与固件升级</p>
+<section><h2>连接 Wi-Fi</h2><button id="scan">重新扫描附近网络</button><p id="scanState" class="muted"></p>
+<form id="connectForm"><label for="networkSelect">附近网络</label><select id="networkSelect"><option value="">请选择，或在下方手动输入</option></select><label for="ssid">选择网络或输入名称</label><input id="ssid" list="networks" maxlength="32" required autocomplete="off"><datalist id="networks"></datalist>
+<label for="password">Wi-Fi 密码</label><input id="password" type="password" maxlength="64" autocomplete="new-password" placeholder="开放网络留空"><button id="connect">连接</button></form><p id="wifiState">正在获取连接状态…</p></section>
+<section><h2>固件升级</h2>
+<h3>ESP32-S3 主控</h3><p>当前版本：<strong id="version">—</strong><br>最新版本：<strong id="esp32Version">尚未检查</strong></p>
+<h3>AT32 低压板</h3><p>当前版本：<strong id="at32Current">尚未读取</strong><br>最新版本：<strong id="at32Version">尚未检查</strong></p>
+<h3>STM32 高压板</h3><p>当前版本：<strong id="st32Current">尚未读取</strong><br>最新版本：<strong id="st32Version">尚未检查</strong></p>
+<button id="checkVersion">检查新版本</button><button id="ota">检查并升级</button><p id="otaState">等待操作</p><progress id="progress" hidden max="100"></progress><p class="muted">升级期间请保持供电。本机升级成功后会自动重启；下挂芯片镜像下载完成不代表已烧录到芯片。</p></section><p id="error" role="alert"></p></main>
+<script>
+const $=id=>document.getElementById(id);let submitting=false,pollingError=false;
+$('networkSelect').onchange=()=>{if($('networkSelect').value)$('ssid').value=$('networkSelect').value};
+async function request(path,data){let r=await fetch(path,{method:data===undefined?'GET':'POST',headers:{'Content-Type':'application/json'},body:data===undefined?undefined:JSON.stringify(data),cache:'no-store'});let j=await r.json();if(!r.ok)throw Error(j.error||'请求失败');return j}
+function showError(e){$('error').textContent=e.message||String(e)}
+function renderVersions(s){
+let o=s.ota;
+$('version').textContent=s.version||'尚未读取';
+$('at32Current').textContent=o.at32_current||'尚未读取';
+$('st32Current').textContent=o.st32_current||'尚未读取';
+for(let chip of ['at32','st32','esp32']){
+let latest=o[chip+'_version'];
+$(chip+'Version').textContent=o[chip+'_checked']?(latest||'版本未知'):(o.busy||o.connecting?'检查中…':o.phase===5?'未完成检查':'尚未检查');
+}}
+$('connectForm').onsubmit=async e=>{e.preventDefault();if(submitting)return;submitting=true;$('connect').disabled=true;$('error').textContent='';try{await request('/api/connect',{ssid:$('ssid').value,password:$('password').value});$('wifiState').textContent='正在连接…';$('password').value=''}catch(e){showError(e)}finally{submitting=false;$('connect').disabled=false}};
+$('scan').onclick=async()=>{try{await request('/api/scan',{});$('scanState').textContent='正在扫描…'}catch(e){showError(e)}};
+$('ota').onclick=async()=>{try{await request('/api/ota',{});$('otaState').textContent='开始联网并检查更新…'}catch(e){showError(e)}};
+$('checkVersion').onclick=async()=>{try{await request('/api/ota/check',{});$('otaState').textContent='正在检查新版本（仅查询，不升级）…'}catch(e){showError(e)}};
+async function poll(){try{let s=await request('/api/status');if(pollingError){$('error').textContent='';pollingError=false}$('name').textContent=s.name;$('version').textContent=s.version;
+let states=['未连接','正在连接…','连接成功','连接失败'];$('wifiState').textContent=(states[s.wifi.phase]||'未知状态')+(s.wifi.phase===2?'：'+s.wifi.ssid+'（'+s.wifi.ip+'）'+(s.wifi.saved?'，配置已保存':''):s.wifi.phase===3?(s.wifi.reason===263?'（263：连接超时），请确认路由器为 2.4GHz、信号及供电正常后重试':'（原因 '+s.wifi.reason+'），请检查网络名称、密码及路由器状态后重试'):'');
+$('scanState').textContent=s.wifi.scanning?'正在扫描…':s.wifi.scan_error?'扫描暂不可用，请稍后重试':'扫描到 '+s.networks.length+' 个网络，可直接输入隐藏网络名称';$('scan').disabled=s.wifi.scanning;
+let list=$('networks'),select=$('networkSelect'),selected=select.value;list.replaceChildren();select.replaceChildren();let placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='请选择，或在下方手动输入';select.appendChild(placeholder);for(let n of s.networks){let o=document.createElement('option');o.value=n.ssid;o.textContent=n.ssid+' · '+n.rssi+' dBm'+(n.open?' · 开放网络':'');list.appendChild(o);select.appendChild(o.cloneNode(true))}select.value=selected;
+let phases=['等待操作','开始联网，检查更新…','下载中…','下载完成','当前已是最新版本','升级失败，请检查网络后重试','发现新版本，可点击“检查并升级”'];$('otaState').textContent=s.ota.connecting?'开始联网…':phases[s.ota.phase]||'未知状态';$('ota').disabled=s.ota.busy||s.ota.connecting;$('checkVersion').disabled=s.ota.busy||s.ota.connecting;renderVersions(s);
+let p=$('progress');p.hidden=s.ota.phase!==2;p.value=s.ota.total?100*s.ota.received/s.ota.total:0;if(!p.hidden)$('otaState').textContent+=' '+Math.floor(p.value)+'%';
+}catch(e){pollingError=true;$('error').textContent='暂时无法访问设备；若设备已重启，请重新连接热点或查看串口。'}finally{setTimeout(poll,1500)}}poll();
+</script></html>

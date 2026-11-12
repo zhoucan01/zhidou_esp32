@@ -1,0 +1,530 @@
+file,line,compiled_translation_unit,source
+main/lv_conf.h,52,False,"/*1: use custom malloc/free, 0: use the built-in `lv_mem_alloc()` and `lv_mem_free()`*/"
+main/lv_conf.h,55,False,/*Size of the memory available for `lv_mem_alloc()` in bytes (>= 2kB)*/
+main/main.c,247,True,"if (xTaskCreatePinnedToCoreWithCaps(lvUIshowTask, ""uiTask"", 8192,"
+main/main.c,318,True,"xTaskCreate(WiFiConnectTask, ""WiFiConnect"", WIFI_CONNECT_TASK_STACK_SIZE,"
+main/main.c,322,True,"xTaskCreate(OTAServiceTask, ""OTAServiceTask"", OTA_SERVICE_TASK_STACK_SIZE,"
+main/main.c,326,True,"xTaskCreate(WiFiPortalTask, ""WiFiPortal"", 4096, NULL, 4, NULL),"
+main/main.c,331,True,"xTaskCreate(DataCenterTask, ""DataCenterTask"", 4096, NULL, 21, NULL),"
+main/main.c,334,True,"xTaskCreate(PowerRecoveryTask, ""PowerRecovery"", 1536, NULL, 8, NULL),"
+main/main.c,337,True,"xTaskCreate(DebugConsoleTask, ""DebugConsole"", 4096, NULL, 9, NULL),"
+main/main.c,340,True,"xTaskCreate(BlueDataDealTask, ""BlueDataDealTask"", 4096, NULL, 20, NULL),"
+main/main.c,343,True,"xTaskCreate(SystemMonitorTask, ""MachineControl"", 4096, NULL, 19, NULL),"
+main/main.c,346,True,"xTaskCreate(FuncMoniterTask, ""Function"", 4096, NULL, 10, NULL),"
+main/main.c,349,True,"xTaskCreate(FaultDealTask, ""FaultDealTask"", 3072, NULL, 18, NULL),"
+main/main.c,356,True,"xTaskCreate(enctest, ""test"", 4096, (void *)&encoder_config, 5, NULL),"
+main/main.c,362,True,"xTaskCreate(ModbusEncoderLogTask, ""encDataLog"", 2560, NULL, 5, NULL),"
+task/BlueDataDeal/BlueDataDeal.c,95,True,"BlueDataQueue = xQueueCreate(5, sizeof(message));"
+task/DryBoil/DryBoilTask.c,163,True,"if (xTaskCreate(dry_boil_run, ""DryBoil"", DRY_BOIL_TASK_STACK_SIZE,"
+task/DryBoil/DryBoilTask.h,45,False,/* FreeRTOS entry: create once with xTaskCreate(). NULL selects the project's
+task/FunctionSelection/FunctionSelection.c,118,True,"if (xTaskCreate(a->FuncSecP1, a->FuncSecP2, a->FuncSecP3,"
+task/FunctionSelection/FunctionSelection.c,199,True,SoyMilkEventGroup = xEventGroupCreate();
+task/FunctionSelection/FunctionSelection.c,200,True,PressEventGroup = xEventGroupCreate();
+task/FunctionSelection/FunctionSelection.c,201,True,PlantMilkEventGroup = xEventGroupCreate();
+task/FunctionSelection/FunctionSelection.c,202,True,SelfCleanEventGroup = xEventGroupCreate();
+task/FunctionSelection/FunctionSelection.c,203,True,FunctionSelectionEventGroup = xEventGroupCreate();
+task/FunctionSelection/FunctionSelection.c,204,True,FuncTypeGroup = xEventGroupCreate();
+task/FunctionSelection/FunctionSelection.c,205,True,FuncOrderGroup = xEventGroupCreate();
+task/OTAService/OTANetUpgrade.c,112,True,s_upg.client = esp_http_client_init(&config);
+task/OTAService/OTANetUpgrade.h,98,False,/* 建链：esp_http_client_init(url) + esp_http_client_open()，幂等。 */
+task/OTAService/OTAVerManager.c,321,True,esp_http_client_handle_t client = esp_http_client_init(&config);
+task/OTAService/OTAVerManager.c,384,True,esp_http_client_handle_t client = esp_http_client_init(&config);
+task/Reservation/Reservation.c,21,True,"ReservationQueue = xQueueCreate(3, sizeof(Reservation_t)); // 创建一个队列，最多容纳3个预约"
+task/SystemMoniter/SystemMoniter.c,212,True,"task_snapshot_t *snapshot = heap_caps_calloc(1, sizeof(*snapshot),"
+task/SystemMoniter/SystemMoniter.c,250,True,SystemGroup = xEventGroupCreate();
+task/WiFiConnect/WiFiConnect.c,223,True,"wifi_ap_record_t *records = heap_caps_calloc(count, sizeof(*records), MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);"
+task/WiFiConnect/WiFiConnect.c,291,True,driver_events = xEventGroupCreate();
+task/WiFiConnect/WiFiConnect.c,293,True,"commands = xQueueCreate(3, sizeof(command_t));"
+task/WiFiConnect/WiFiConnect.c,433,True,"return xTaskCreate(WiFiConnectTask, ""WiFiConnect"", WIFI_CONNECT_TASK_STACK_SIZE,"
+task/WiFiPortal/WiFiPortal.c,42,True,free(body); return ret;
+task/WiFiPortal/WiFiPortal.c,178,True,"wifi_ap_record_t *records = heap_caps_calloc(WIFI_CONNECT_SCAN_LIMIT, sizeof(*records), MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);"
+task/WiFiPortal/WiFiPortal.c,201,True,"esp_err_t err = httpd_start(&server, &config);"
+function/LZ4/lz4.c,227,True,# define ALLOC(s)          malloc(s)
+function/LZ4/lz4.c,228,True,"# define ALLOC_AND_ZERO(s) calloc(1,s)"
+function/LZ4/lz4.c,229,True,# define FREEMEM(p)        free(p)
+function/SoyMilkMake/SoyMilkMake.c,137,True,"xTaskCreate(tempNNTask, ""tempNNTask"", 3072, NULL, 19, NULL);"
+function/UI/ui_lz4_decoder.c,85,True,uint8_t *decoded = heap_caps_malloc(
+function/usrdug/usrdug.c,150,True,"commands = xQueueCreate(8, sizeof(soy_command_t));"
+function/usrdug/usrdug.c,152,True,"if (xTaskCreate(soy_mode_task, ""usrdug"", 3072, NULL, 8, NULL) != pdPASS) {"
+function/oldCode/tempurature/evaluate_dual.c,125,False,Row *rows = (Row *)malloc(cap * sizeof(Row));
+function/oldCode/tempurature/evaluate_dual.c,131,False,"if (nrows >= cap) { cap *= 2; rows = (Row *)realloc(rows, cap * sizeof(Row)); }"
+function/oldCode/tempurature/evaluate_dual.c,142,False,"if (nrows == 0) { fprintf(stderr, ""no usable rows\n""); free(rows); return 1; }"
+function/oldCode/tempurature/evaluate_dual.c,178,False,free(rows);
+function/UI/Tofu/ui_tofu_ready.c,53,True,"if (xTaskCreate(collect_task, ""TofuCollect"", 4096, NULL, 13, NULL) != pdPASS) {"
+hardware/Beep/buzzer.cpp,140,True,"queue_handle_ = xQueueCreate(kQueueSize, sizeof(message_t));"
+hardware/Beep/buzzer.cpp,141,True,BaseType_t res = xTaskCreate(
+components/Bluetooch/Bluetooch.c,64,True,ret = nimble_port_init();
+components/cjson/cJSON.c,167,True,return malloc(size);
+components/cjson/cJSON.c,171,True,free(pointer);
+components/cjson/cJSON.c,175,True,"return realloc(pointer, size);"
+components/esp_lcd_st7796/esp_lcd_st7796_general.c,56,True,"st7796 = (st7796_panel_t *)calloc(1, sizeof(st7796_panel_t));"
+components/esp_lcd_st7796/esp_lcd_st7796_general.c,155,True,free(st7796);
+components/esp_lcd_st7796/esp_lcd_st7796_general.c,168,True,free(st7796);
+components/esp_lcd_st7796/esp_lcd_st7796_mipi.c,57,False,"st7796_panel_t *st7796 = (st7796_panel_t *)calloc(1, sizeof(st7796_panel_t));"
+components/esp_lcd_st7796/esp_lcd_st7796_mipi.c,157,False,free(st7796);
+components/esp_lcd_st7796/esp_lcd_st7796_mipi.c,202,False,free(st7796);
+components/HttpSever/HttpSever.c,820,True,"if (httpd_start(&server, &config) != ESP_OK) {"
+components/lvgl/lv_conf_template.h,48,False,"/*1: use custom malloc/free, 0: use the built-in `lv_mem_alloc()` and `lv_mem_free()`*/"
+components/lvgl/lv_conf_template.h,51,False,/*Size of the memory available for `lv_mem_alloc()` in bytes (>= 2kB)*/
+components/myLvgl/lv_port_disp.c,96,True,"lv_color_t *buf1 = heap_caps_malloc(buf_size,"
+components/myLvgl/lv_port_disp.c,98,True,"lv_color_t *buf2 = heap_caps_malloc(buf_size,"
+components/myLvgl/lv_port_disp.c,109,True,"buf1 = heap_caps_malloc(buf_size,"
+components/myLvgl/lv_port_disp.c,111,True,"buf2 = heap_caps_malloc(buf_size,"
+components/OTA/OTA.c,217,True,BaseType_t task_created = xTaskCreate(
+components/OTA/OTA.c,293,True,output_buffer = malloc(evt->data_len + 1);
+components/OTA/OTA.c,296,True,"char *new_buf = realloc(output_buffer, output_len + evt->data_len + 1);"
+components/OTA/OTA.c,299,True,free(output_buffer);
+components/OTA/OTA.c,356,True,free(output_buffer);
+components/OTA/OTA.c,363,True,free(output_buffer);
+components/OTA/OTA.c,390,True,esp_http_client_handle_t http_client = esp_http_client_init(&http_cfg);
+components/OTA/OTA.c,430,True,char *buffer = malloc(4096);
+components/OTA/OTA.c,445,True,free(buffer);
+components/OTA/OTA.c,453,True,free(buffer);
+components/OTA/OTA.c,462,True,free(buffer);
+components/OTA/OTA.c,476,True,free(buffer);
+components/OTA/OTA.c,535,True,esp_http_client_handle_t client = esp_http_client_init(&config);
+components/OTA/OTA.c,538,True,free(post_data);
+components/OTA/OTA.c,553,True,free(post_data);
+components/OTA/OTA.c,564,True,"xTaskCreate(ota_check_task, ""ota_check"", 8192, NULL, 5, NULL);"
+components/RGB/RGB.c,194,True,uint16_t *buffer = malloc(LCDW * LCDH * sizeof(uint16_t));
+components/RGB/RGB.c,204,True,free(buffer);
+components/RGB/RGB.c,213,True,"uint16_t *color_bar = heap_caps_malloc(LCDW * bar_height * sizeof(uint16_t), MALLOC_CAP_DMA);"
+components/RGB/RGB.c,259,True,uint16_t *buffer = malloc(LCDW * LCDH * sizeof(uint16_t));
+components/RGB/RGB.c,276,True,free(buffer);  // ✅ 用 free
+components/RGB/RGB.c,290,True,uint16_t *buffer = malloc(LCDW * LCDH * sizeof(uint16_t));
+components/RGB/RGB.c,306,True,free(buffer);  // ✅ 用 free
+components/wifi/wifi.c,7,True,WiFiEventGroup = xEventGroupCreate();
+components/cmake_utilities/test_apps/main/test_cmake_utilities.c,37,False,"printf(""MALLOC_CAP_%s: Before %u bytes free, After %u bytes free (delta %d)\n"", type, before_free, after_free, delta);"
+components/esp_lcd_st7796/test_apps/main/test_esp_lcd_st7796_general.c,70,False,refresh_finish = xSemaphoreCreateBinary();
+components/esp_lcd_st7796/test_apps/main/test_esp_lcd_st7796_general.c,75,False,"uint8_t *color = (uint8_t *)heap_caps_calloc(1, row_line * TEST_LCD_H_RES * byte_per_pixel, MALLOC_CAP_DMA);"
+components/esp_lcd_st7796/test_apps/main/test_esp_lcd_st7796_general.c,87,False,free(color);
+components/esp_lcd_st7796/test_apps/main/test_esp_lcd_st7796_mipi.c,118,False,refresh_finish = xSemaphoreCreateBinary();
+components/esp_lcd_st7796/test_apps/main/test_esp_lcd_st7796_mipi.c,153,False,"uint8_t *color = (uint8_t *)heap_caps_calloc(1, row_line * h_res * byte_per_pixel, MALLOC_CAP_DMA);"
+components/esp_lcd_st7796/test_apps/main/test_esp_lcd_st7796_mipi.c,177,False,free(color);
+components/lvgl/src/lv_conf_internal.h,116,False,"/*1: use custom malloc/free, 0: use the built-in `lv_mem_alloc()` and `lv_mem_free()`*/"
+components/lvgl/src/lv_conf_internal.h,125,False,/*Size of the memory available for `lv_mem_alloc()` in bytes (>= 2kB)*/
+components/lvgl/src/core/lv_event.c,164,True,"obj->spec_attr->event_dsc = lv_mem_realloc(obj->spec_attr->event_dsc,"
+components/lvgl/src/core/lv_event.c,188,True,"obj->spec_attr->event_dsc = lv_mem_realloc(obj->spec_attr->event_dsc,"
+components/lvgl/src/core/lv_event.c,213,True,"obj->spec_attr->event_dsc = lv_mem_realloc(obj->spec_attr->event_dsc,"
+components/lvgl/src/core/lv_event.c,237,True,"obj->spec_attr->event_dsc = lv_mem_realloc(obj->spec_attr->event_dsc,"
+components/lvgl/src/core/lv_group.c,98,True,lv_mem_free(group);
+components/lvgl/src/core/lv_group.c,209,True,lv_mem_free(i);
+components/lvgl/src/core/lv_obj.c,365,True,obj->spec_attr = lv_mem_alloc(sizeof(_lv_obj_spec_attr_t));
+components/lvgl/src/core/lv_obj.c,470,True,lv_mem_free(obj->spec_attr->children);
+components/lvgl/src/core/lv_obj.c,474,True,lv_mem_free(obj->spec_attr->event_dsc);
+components/lvgl/src/core/lv_obj.c,478,True,lv_mem_free(obj->spec_attr);
+components/lvgl/src/core/lv_obj_class.c,47,True,lv_obj_t * obj = lv_mem_alloc(s);
+components/lvgl/src/core/lv_obj_class.c,59,True,lv_mem_free(obj);
+components/lvgl/src/core/lv_obj_class.c,64,True,disp->screens = lv_mem_alloc(sizeof(lv_obj_t *));
+components/lvgl/src/core/lv_obj_class.c,70,True,"disp->screens = lv_mem_realloc(disp->screens, sizeof(lv_obj_t *) * disp->screen_cnt);"
+components/lvgl/src/core/lv_obj_class.c,89,True,parent->spec_attr->children = lv_mem_alloc(sizeof(lv_obj_t *));
+components/lvgl/src/core/lv_obj_class.c,95,True,"parent->spec_attr->children = lv_mem_realloc(parent->spec_attr->children,"
+components/lvgl/src/core/lv_obj_pos.c,326,True,"LV_GC_ROOT(_lv_layout_list) = lv_mem_realloc(LV_GC_ROOT(_lv_layout_list), layout_cnt * sizeof(lv_layout_dsc_t));"
+components/lvgl/src/core/lv_obj_style.c,92,True,"obj->styles = lv_mem_realloc(obj->styles, obj->style_cnt * sizeof(_lv_obj_style_t));"
+components/lvgl/src/core/lv_obj_style.c,131,True,lv_mem_free(obj->styles[i].style);
+components/lvgl/src/core/lv_obj_style.c,142,True,"obj->styles = lv_mem_realloc(obj->styles, obj->style_cnt * sizeof(_lv_obj_style_t));"
+components/lvgl/src/core/lv_obj_style.c,551,True,"obj->styles = lv_mem_realloc(obj->styles, obj->style_cnt * sizeof(_lv_obj_style_t));"
+components/lvgl/src/core/lv_obj_style.c,562,True,obj->styles[i].style = lv_mem_alloc(sizeof(lv_style_t));
+components/lvgl/src/core/lv_obj_style.c,587,True,"obj->styles = lv_mem_realloc(obj->styles, obj->style_cnt * sizeof(_lv_obj_style_t));"
+components/lvgl/src/core/lv_obj_style.c,594,True,obj->styles[0].style = lv_mem_alloc(sizeof(lv_style_t));
+components/lvgl/src/core/lv_obj_style.c,742,True,lv_mem_free(tr);
+components/lvgl/src/core/lv_obj_style.c,859,True,lv_mem_free(tr);
+components/lvgl/src/core/lv_obj_tree.c,154,True,"old_parent->spec_attr->children = lv_mem_realloc(old_parent->spec_attr->children,"
+components/lvgl/src/core/lv_obj_tree.c,158,True,lv_mem_free(old_parent->spec_attr->children);
+components/lvgl/src/core/lv_obj_tree.c,164,True,"parent->spec_attr->children = lv_mem_realloc(parent->spec_attr->children,"
+components/lvgl/src/core/lv_obj_tree.c,401,True,"disp->screens = lv_mem_realloc(disp->screens, disp->screen_cnt * sizeof(lv_obj_t *));"
+components/lvgl/src/core/lv_obj_tree.c,411,True,"obj->parent->spec_attr->children = lv_mem_realloc(obj->parent->spec_attr->children,"
+components/lvgl/src/core/lv_obj_tree.c,416,True,lv_mem_free(obj);
+components/lvgl/src/core/lv_refr.c,560,True,lv_mem_free(sync_area);
+components/lvgl/src/draw/lv_draw_layer.c,42,True,lv_draw_layer_ctx_t * layer_ctx = lv_mem_alloc(draw_ctx->layer_instance_size);
+components/lvgl/src/draw/lv_draw_layer.c,60,True,lv_mem_free(layer_ctx);
+components/lvgl/src/draw/lv_draw_layer.c,88,True,lv_mem_free(layer_ctx);
+components/lvgl/src/draw/lv_draw_mask.c,218,True,lv_mem_free(radius_p->circle->cir_opa);
+components/lvgl/src/draw/lv_draw_mask.c,219,True,lv_mem_free(radius_p->circle);
+components/lvgl/src/draw/lv_draw_mask.c,228,True,lv_mem_free(poly_p->cfg.points);
+components/lvgl/src/draw/lv_draw_mask.c,237,True,lv_mem_free(LV_GC_ROOT(_lv_circle_cache[i]).buf);
+components/lvgl/src/draw/lv_draw_mask.c,516,True,entry = lv_mem_alloc(sizeof(_lv_draw_mask_radius_circle_dsc_t));
+components/lvgl/src/draw/lv_draw_mask.c,571,True,lv_point_t * p = lv_mem_alloc(point_cnt * sizeof(lv_point_t));
+components/lvgl/src/draw/lv_draw_mask.c,1368,True,if(c->buf) lv_mem_free(c->buf);
+components/lvgl/src/draw/lv_draw_mask.c,1370,True,c->buf = lv_mem_alloc(radius * 6 + 6);  /*Use uint16_t for opa_start_on_y and x_start_on_y*/
+components/lvgl/src/draw/lv_img_buf.c,282,True,lv_img_dsc_t * dsc = lv_mem_alloc(sizeof(lv_img_dsc_t));
+components/lvgl/src/draw/lv_img_buf.c,291,True,lv_mem_free(dsc);
+components/lvgl/src/draw/lv_img_buf.c,296,True,dsc->data = lv_mem_alloc(dsc->data_size);
+components/lvgl/src/draw/lv_img_buf.c,298,True,lv_mem_free(dsc);
+components/lvgl/src/draw/lv_img_buf.c,315,True,lv_mem_free((void *)dsc->data);
+components/lvgl/src/draw/lv_img_buf.c,317,True,lv_mem_free(dsc);
+components/lvgl/src/draw/lv_img_cache.c,158,True,lv_mem_free(LV_GC_ROOT(_lv_img_cache_array));
+components/lvgl/src/draw/lv_img_cache.c,162,True,LV_GC_ROOT(_lv_img_cache_array) = lv_mem_alloc(sizeof(_lv_img_cache_entry_t) * new_entry_cnt);
+components/lvgl/src/draw/lv_img_decoder.c,124,True,dsc->src = lv_mem_alloc(fnlen + 1);
+components/lvgl/src/draw/lv_img_decoder.c,162,True,lv_mem_free((void *)dsc->src);
+components/lvgl/src/draw/lv_img_decoder.c,194,True,lv_mem_free((void *)dsc->src);
+components/lvgl/src/draw/lv_img_decoder.c,223,True,lv_mem_free(decoder);
+components/lvgl/src/draw/lv_img_decoder.c,342,True,dsc->user_data = lv_mem_alloc(sizeof(lv_img_decoder_built_in_data_t));
+components/lvgl/src/draw/lv_img_decoder.c,375,True,uint8_t * fs_buf = lv_mem_alloc(len);
+components/lvgl/src/draw/lv_img_decoder.c,382,True,lv_mem_free(fs_buf);
+components/lvgl/src/draw/lv_img_decoder.c,411,True,dsc->user_data = lv_mem_alloc(sizeof(lv_img_decoder_built_in_data_t));
+components/lvgl/src/draw/lv_img_decoder.c,421,True,user_data->palette                         = lv_mem_alloc(palette_size * sizeof(lv_color_t));
+components/lvgl/src/draw/lv_img_decoder.c,423,True,user_data->opa                             = lv_mem_alloc(palette_size * sizeof(lv_opa_t));
+components/lvgl/src/draw/lv_img_decoder.c,525,True,if(user_data->palette) lv_mem_free(user_data->palette);
+components/lvgl/src/draw/lv_img_decoder.c,526,True,if(user_data->opa) lv_mem_free(user_data->opa);
+components/lvgl/src/draw/lv_img_decoder.c,528,True,lv_mem_free(user_data);
+components/lvgl/src/font/lv_font_fmt_txt.c,119,True,"uint8_t * tmp = lv_mem_realloc(LV_GC_ROOT(_lv_font_decompr_buf), buf_size);"
+components/lvgl/src/font/lv_font_fmt_txt.c,199,True,lv_mem_free(LV_GC_ROOT(_lv_font_decompr_buf));
+components/lvgl/src/font/lv_font_loader.c,93,True,lv_font_t * font = lv_mem_alloc(sizeof(lv_font_t));
+components/lvgl/src/font/lv_font_loader.c,130,True,lv_mem_free((void *)kern_dsc->glyph_ids);
+components/lvgl/src/font/lv_font_loader.c,133,True,lv_mem_free((void *)kern_dsc->values);
+components/lvgl/src/font/lv_font_loader.c,135,True,lv_mem_free((void *)kern_dsc);
+components/lvgl/src/font/lv_font_loader.c,144,True,lv_mem_free((void *)kern_dsc->class_pair_values);
+components/lvgl/src/font/lv_font_loader.c,147,True,lv_mem_free((void *)kern_dsc->left_class_mapping);
+components/lvgl/src/font/lv_font_loader.c,150,True,lv_mem_free((void *)kern_dsc->right_class_mapping);
+components/lvgl/src/font/lv_font_loader.c,152,True,lv_mem_free((void *)kern_dsc);
+components/lvgl/src/font/lv_font_loader.c,162,True,lv_mem_free((void *)cmaps[i].glyph_id_ofs_list);
+components/lvgl/src/font/lv_font_loader.c,164,True,lv_mem_free((void *)cmaps[i].unicode_list);
+components/lvgl/src/font/lv_font_loader.c,166,True,lv_mem_free(cmaps);
+components/lvgl/src/font/lv_font_loader.c,170,True,lv_mem_free((void *)dsc->glyph_bitmap);
+components/lvgl/src/font/lv_font_loader.c,173,True,lv_mem_free((void *)dsc->glyph_dsc);
+components/lvgl/src/font/lv_font_loader.c,175,True,lv_mem_free(dsc);
+components/lvgl/src/font/lv_font_loader.c,177,True,lv_mem_free(font);
+components/lvgl/src/font/lv_font_loader.c,265,True,uint8_t * glyph_id_ofs_list = lv_mem_alloc(ids_size);
+components/lvgl/src/font/lv_font_loader.c,281,True,uint16_t * unicode_list = (uint16_t *)lv_mem_alloc(list_size);
+components/lvgl/src/font/lv_font_loader.c,291,True,uint16_t * buf = lv_mem_alloc(sizeof(uint16_t) * cmap->list_length);
+components/lvgl/src/font/lv_font_loader.c,322,True,lv_mem_alloc(cmaps_subtables_count * sizeof(lv_font_fmt_txt_cmap_t));
+components/lvgl/src/font/lv_font_loader.c,329,True,cmap_table_bin_t * cmaps_tables = lv_mem_alloc(sizeof(cmap_table_bin_t) * font_dsc->cmap_num);
+components/lvgl/src/font/lv_font_loader.c,333,True,lv_mem_free(cmaps_tables);
+components/lvgl/src/font/lv_font_loader.c,347,True,lv_mem_alloc(loca_count * sizeof(lv_font_fmt_txt_glyph_dsc_t));
+components/lvgl/src/font/lv_font_loader.c,417,True,uint8_t * glyph_bmp = (uint8_t *)lv_mem_alloc(sizeof(uint8_t) * cur_bmp_size);
+components/lvgl/src/font/lv_font_loader.c,486,True,lv_mem_alloc(sizeof(lv_font_fmt_txt_dsc_t));
+components/lvgl/src/font/lv_font_loader.c,535,True,uint32_t * glyph_offset = lv_mem_alloc(sizeof(uint32_t) * (loca_count + 1));
+components/lvgl/src/font/lv_font_loader.c,558,True,lv_mem_free(glyph_offset);
+components/lvgl/src/font/lv_font_loader.c,567,True,lv_mem_free(glyph_offset);
+components/lvgl/src/font/lv_font_loader.c,602,True,lv_font_fmt_txt_kern_pair_t * kern_pair = lv_mem_alloc(sizeof(lv_font_fmt_txt_kern_pair_t));
+components/lvgl/src/font/lv_font_loader.c,622,True,uint8_t * glyph_ids = lv_mem_alloc(ids_size);
+components/lvgl/src/font/lv_font_loader.c,623,True,int8_t * values = lv_mem_alloc(glyph_entries);
+components/lvgl/src/font/lv_font_loader.c,640,True,lv_font_fmt_txt_kern_classes_t * kern_classes = lv_mem_alloc(sizeof(lv_font_fmt_txt_kern_classes_t));
+components/lvgl/src/font/lv_font_loader.c,659,True,uint8_t * kern_left = lv_mem_alloc(kern_class_mapping_length);
+components/lvgl/src/font/lv_font_loader.c,660,True,uint8_t * kern_right = lv_mem_alloc(kern_class_mapping_length);
+components/lvgl/src/font/lv_font_loader.c,661,True,int8_t * kern_values = lv_mem_alloc(kern_values_length);
+components/lvgl/src/hal/lv_hal_disp.c,176,True,lv_draw_ctx_t * draw_ctx = lv_mem_alloc(driver->draw_ctx_size);
+components/lvgl/src/hal/lv_hal_disp.c,198,True,lv_mem_free(disp);
+components/lvgl/src/hal/lv_hal_disp.c,323,True,lv_mem_free(disp);
+components/lvgl/src/hal/lv_hal_indev.c,143,True,lv_mem_free(indev);
+components/lvgl/src/misc/lv_anim.c,150,True,lv_mem_free(a);
+components/lvgl/src/misc/lv_anim.c,438,True,lv_mem_free(a);
+components/lvgl/src/misc/lv_anim_timeline.c,53,True,lv_anim_timeline_t * at = (lv_anim_timeline_t *)lv_mem_alloc(sizeof(lv_anim_timeline_t));
+components/lvgl/src/misc/lv_anim_timeline.c,68,True,lv_mem_free(at->anim_dsc);
+components/lvgl/src/misc/lv_anim_timeline.c,69,True,lv_mem_free(at);
+components/lvgl/src/misc/lv_anim_timeline.c,77,True,"at->anim_dsc = lv_mem_realloc(at->anim_dsc, at->anim_dsc_cnt * sizeof(lv_anim_timeline_dsc_t));"
+components/lvgl/src/misc/lv_async.c,48,True,lv_async_info_t * info = lv_mem_alloc(sizeof(lv_async_info_t));
+components/lvgl/src/misc/lv_async.c,57,True,lv_mem_free(info);
+components/lvgl/src/misc/lv_async.c,84,True,lv_mem_free(info);
+components/lvgl/src/misc/lv_async.c,104,True,lv_mem_free(info);
+components/lvgl/src/misc/lv_fs.c,95,True,file_p->cache = lv_mem_alloc(sizeof(lv_fs_file_cache_t));
+components/lvgl/src/misc/lv_fs.c,119,True,lv_mem_free(file_p->cache->buffer);
+components/lvgl/src/misc/lv_fs.c,122,True,lv_mem_free(file_p->cache);
+components/lvgl/src/misc/lv_fs.c,182,True,file_p->cache->buffer = lv_mem_alloc(buffer_size);
+components/lvgl/src/misc/lv_ll.c,71,True,n_new = lv_mem_alloc(ll_p->n_size + LL_NODE_META_SIZE);
+components/lvgl/src/misc/lv_ll.c,107,True,n_new = lv_mem_alloc(ll_p->n_size + LL_NODE_META_SIZE);
+components/lvgl/src/misc/lv_ll.c,130,True,n_new = lv_mem_alloc(ll_p->n_size + LL_NODE_META_SIZE);
+components/lvgl/src/misc/lv_ll.c,203,True,lv_mem_free(i);
+components/lvgl/src/misc/lv_lru.c,77,True,lv_lru_t * cache = (lv_lru_t *) lv_mem_alloc(sizeof(lv_lru_t));
+components/lvgl/src/misc/lv_lru.c,92,True,cache->items = (lv_lru_item_t **) lv_mem_alloc(sizeof(lv_lru_item_t *) * cache->hash_table_size);
+components/lvgl/src/misc/lv_lru.c,96,True,lv_mem_free(cache);
+components/lvgl/src/misc/lv_lru.c,117,True,lv_mem_free(item);
+components/lvgl/src/misc/lv_lru.c,121,True,lv_mem_free(cache->items);
+components/lvgl/src/misc/lv_lru.c,128,True,lv_mem_free(item);
+components/lvgl/src/misc/lv_lru.c,134,True,lv_mem_free(cache);
+components/lvgl/src/misc/lv_lru.c,167,True,item->key = lv_mem_alloc(key_length);
+components/lvgl/src/misc/lv_lru.c,341,True,item = (lv_lru_item_t *) lv_mem_alloc(sizeof(lv_lru_item_t));
+components/lvgl/src/misc/lv_mem.c,137,True,void * lv_mem_alloc(size_t size)
+components/lvgl/src/misc/lv_mem.c,181,True,void lv_mem_free(void * data)
+components/lvgl/src/misc/lv_mem.c,206,True,"void * lv_mem_realloc(void * data_p, size_t new_size)"
+components/lvgl/src/misc/lv_mem.c,211,True,lv_mem_free(data_p);
+components/lvgl/src/misc/lv_mem.c,215,True,if(data_p == &zero_mem) return lv_mem_alloc(new_size);
+components/lvgl/src/misc/lv_mem.c,322,True,"void * buf = lv_mem_realloc(LV_GC_ROOT(lv_mem_buf[i]).p, size);"
+components/lvgl/src/misc/lv_mem.c,364,True,lv_mem_free(LV_GC_ROOT(lv_mem_buf[i]).p);
+components/lvgl/src/misc/lv_mem.h,74,False,void * lv_mem_alloc(size_t size);
+components/lvgl/src/misc/lv_mem.h,80,False,void lv_mem_free(void * data);
+components/lvgl/src/misc/lv_mem.h,89,False,"void * lv_mem_realloc(void * data_p, size_t new_size);"
+components/lvgl/src/misc/lv_style.c,174,True,if(style->prop_cnt > 1) lv_mem_free(style->v_p.values_and_props);
+components/lvgl/src/misc/lv_style.c,202,True,"uint8_t * new_p = lv_mem_realloc(old_p, required_size * sizeof(uint8_t));"
+components/lvgl/src/misc/lv_style.c,256,True,uint8_t * new_values_and_props = lv_mem_alloc(size);
+components/lvgl/src/misc/lv_style.c,275,True,lv_mem_free(old_values);
+components/lvgl/src/misc/lv_style.c,440,True,"uint8_t * values_and_props = lv_mem_realloc(style->v_p.values_and_props, size);"
+components/lvgl/src/misc/lv_style.c,466,True,uint8_t * values_and_props = lv_mem_alloc(size);
+components/lvgl/src/misc/lv_timer.c,206,True,lv_mem_free(timer);
+components/lvgl/src/misc/lv_txt.c,471,True,text = lv_mem_alloc(len_ap + 1);
+components/lvgl/src/misc/lv_txt.c,480,True,text = lv_mem_alloc(len + 1);
+components/lvgl/src/misc/lv_txt_ap.c,153,True,ch_enc = (uint32_t *)lv_mem_alloc(sizeof(uint32_t) * (txt_length + 1));
+components/lvgl/src/misc/lv_txt_ap.c,154,True,ch_fin = (uint32_t *)lv_mem_alloc(sizeof(uint32_t) * (txt_length + 1));
+components/lvgl/src/misc/lv_txt_ap.c,222,True,lv_mem_free(ch_fin);
+components/lvgl/src/misc/lv_txt_ap.c,250,True,lv_mem_free(ch_enc);
+components/lvgl/src/widgets/lv_btnmatrix.c,397,True,lv_mem_free(btnm->button_areas);
+components/lvgl/src/widgets/lv_btnmatrix.c,398,True,lv_mem_free(btnm->ctrl_bits);
+components/lvgl/src/widgets/lv_btnmatrix.c,876,True,lv_mem_free(btnm->button_areas);
+components/lvgl/src/widgets/lv_btnmatrix.c,880,True,lv_mem_free(btnm->ctrl_bits);
+components/lvgl/src/widgets/lv_btnmatrix.c,884,True,btnm->button_areas = lv_mem_alloc(sizeof(lv_area_t) * btn_cnt);
+components/lvgl/src/widgets/lv_btnmatrix.c,886,True,btnm->ctrl_bits = lv_mem_alloc(sizeof(lv_btnmatrix_ctrl_t) * btn_cnt);
+components/lvgl/src/widgets/lv_canvas.c,189,True,lv_color_t * cbuf = lv_mem_alloc(dest_img->header.w * sizeof(lv_color_t));
+components/lvgl/src/widgets/lv_canvas.c,190,True,lv_opa_t * abuf = lv_mem_alloc(dest_img->header.w * sizeof(lv_opa_t));
+components/lvgl/src/widgets/lv_canvas.c,205,True,lv_mem_free(cbuf);
+components/lvgl/src/widgets/lv_canvas.c,206,True,lv_mem_free(abuf);
+components/lvgl/src/widgets/lv_canvas.c,808,True,lv_draw_ctx_t * draw_ctx = lv_mem_alloc(sizeof(lv_draw_sw_ctx_t));
+components/lvgl/src/widgets/lv_canvas.c,827,True,lv_mem_free(disp->driver->draw_ctx);
+components/lvgl/src/widgets/lv_checkbox.c,78,True,"if(!cb->static_txt) _txt = lv_mem_realloc(_txt, len + 1);"
+components/lvgl/src/widgets/lv_checkbox.c,79,True,else _txt = lv_mem_alloc(len + 1);
+components/lvgl/src/widgets/lv_checkbox.c,97,True,if(!cb->static_txt) lv_mem_free((void *)cb->txt);
+components/lvgl/src/widgets/lv_checkbox.c,143,True,lv_mem_free((void *)cb->txt);
+components/lvgl/src/widgets/lv_dropdown.c,138,True,lv_mem_free(dropdown->options);
+components/lvgl/src/widgets/lv_dropdown.c,142,True,dropdown->options = lv_mem_alloc(len);
+components/lvgl/src/widgets/lv_dropdown.c,178,True,lv_mem_free(dropdown->options);
+components/lvgl/src/widgets/lv_dropdown.c,201,True,dropdown->options = lv_mem_alloc(len);
+components/lvgl/src/widgets/lv_dropdown.c,218,True,"dropdown->options        = lv_mem_realloc(dropdown->options, new_len + 1);"
+components/lvgl/src/widgets/lv_dropdown.c,267,True,lv_mem_free(dropdown->options);
+components/lvgl/src/widgets/lv_dropdown.c,625,True,lv_mem_free(dropdown->options);
+components/lvgl/src/widgets/lv_img.c,99,True,lv_mem_free((void *)img->src);
+components/lvgl/src/widgets/lv_img.c,113,True,lv_mem_free((void *)img->src);
+components/lvgl/src/widgets/lv_img.c,127,True,char * new_str = lv_mem_alloc(strlen(src) + 1);
+components/lvgl/src/widgets/lv_img.c,133,True,if(old_src) lv_mem_free((void *)old_src);
+components/lvgl/src/widgets/lv_img.c,417,True,lv_mem_free((void *)img->src);
+components/lvgl/src/widgets/lv_label.c,101,True,"label->text = lv_mem_realloc(label->text, len);"
+components/lvgl/src/widgets/lv_label.c,107,True,"label->text = lv_mem_realloc(label->text, strlen(label->text) + 1);"
+components/lvgl/src/widgets/lv_label.c,116,True,lv_mem_free(label->text);
+components/lvgl/src/widgets/lv_label.c,124,True,label->text = lv_mem_alloc(len);
+components/lvgl/src/widgets/lv_label.c,134,True,label->text = lv_mem_alloc(len);
+components/lvgl/src/widgets/lv_label.c,162,True,lv_mem_free(label->text);
+components/lvgl/src/widgets/lv_label.c,181,True,lv_mem_free(label->text);
+components/lvgl/src/widgets/lv_label.c,654,True,"label->text        = lv_mem_realloc(label->text, new_len + 1);"
+components/lvgl/src/widgets/lv_label.c,729,True,if(!label->static_txt) lv_mem_free(label->text);
+components/lvgl/src/widgets/lv_label.c,1207,True,label->dot.tmp_ptr = lv_mem_alloc(len + 1);
+components/lvgl/src/widgets/lv_label.c,1249,True,lv_mem_free(label->dot.tmp_ptr);
+components/lvgl/src/widgets/lv_table.c,112,True,"table->cell_data[cell] = lv_mem_realloc(table->cell_data[cell], to_allocate);"
+components/lvgl/src/widgets/lv_table.c,174,True,"table->cell_data[cell] = lv_mem_realloc(table->cell_data[cell], sizeof(lv_table_cell_t) + len_ap + 1);"
+components/lvgl/src/widgets/lv_table.c,184,True,"table->cell_data[cell] = lv_mem_realloc(table->cell_data[cell],"
+components/lvgl/src/widgets/lv_table.c,217,True,"table->row_h = lv_mem_realloc(table->row_h, table->row_cnt * sizeof(table->row_h[0]));"
+components/lvgl/src/widgets/lv_table.c,229,True,lv_mem_free(table->cell_data[i]->user_data);
+components/lvgl/src/widgets/lv_table.c,233,True,lv_mem_free(table->cell_data[i]);
+components/lvgl/src/widgets/lv_table.c,237,True,"table->cell_data = lv_mem_realloc(table->cell_data, table->row_cnt * table->col_cnt * sizeof(lv_table_cell_t *));"
+components/lvgl/src/widgets/lv_table.c,262,True,lv_table_cell_t ** new_cell_data = lv_mem_alloc(table->row_cnt * table->col_cnt * sizeof(lv_table_cell_t *));
+components/lvgl/src/widgets/lv_table.c,287,True,lv_mem_free(table->cell_data[idx]->user_data);
+components/lvgl/src/widgets/lv_table.c,291,True,lv_mem_free(table->cell_data[idx]);
+components/lvgl/src/widgets/lv_table.c,296,True,lv_mem_free(table->cell_data);
+components/lvgl/src/widgets/lv_table.c,300,True,"table->col_w = lv_mem_realloc(table->col_w, col_cnt * sizeof(table->col_w[0]));"
+components/lvgl/src/widgets/lv_table.c,338,True,table->cell_data[cell]    = lv_mem_alloc(sizeof(lv_table_cell_t) + 1); /*+1: trailing '\0 */
+components/lvgl/src/widgets/lv_table.c,365,True,table->cell_data[cell]    = lv_mem_alloc(sizeof(lv_table_cell_t) + 1); /*+1: trailing '\0 */
+components/lvgl/src/widgets/lv_table.c,393,True,table->cell_data[cell]    = lv_mem_alloc(sizeof(lv_table_cell_t) + 1); /*+1: trailing '\0 */
+components/lvgl/src/widgets/lv_table.c,403,True,lv_mem_free(table->cell_data[cell]->user_data);
+components/lvgl/src/widgets/lv_table.c,513,True,table->col_w = lv_mem_alloc(table->col_cnt * sizeof(table->col_w[0]));
+components/lvgl/src/widgets/lv_table.c,514,True,table->row_h = lv_mem_alloc(table->row_cnt * sizeof(table->row_h[0]));
+components/lvgl/src/widgets/lv_table.c,517,True,"table->cell_data = lv_mem_realloc(table->cell_data, table->row_cnt * table->col_cnt * sizeof(lv_table_cell_t *));"
+components/lvgl/src/widgets/lv_table.c,533,True,lv_mem_free(table->cell_data[i]->user_data);
+components/lvgl/src/widgets/lv_table.c,537,True,lv_mem_free(table->cell_data[i]);
+components/lvgl/src/widgets/lv_table.c,542,True,if(table->cell_data) lv_mem_free(table->cell_data);
+components/lvgl/src/widgets/lv_table.c,543,True,if(table->row_h) lv_mem_free(table->row_h);
+components/lvgl/src/widgets/lv_table.c,544,True,if(table->col_w) lv_mem_free(table->col_w);
+components/lvgl/src/widgets/lv_textarea.c,145,True,"ta->pwd_tmp = lv_mem_realloc(ta->pwd_tmp, realloc_size);"
+components/lvgl/src/widgets/lv_textarea.c,195,True,"ta->pwd_tmp = lv_mem_realloc(ta->pwd_tmp, realloc_size);"
+components/lvgl/src/widgets/lv_textarea.c,243,True,"ta->pwd_tmp = lv_mem_realloc(ta->pwd_tmp, strlen(ta->pwd_tmp) + 1);"
+components/lvgl/src/widgets/lv_textarea.c,303,True,"ta->pwd_tmp = lv_mem_realloc(ta->pwd_tmp, strlen(txt) + 1);"
+components/lvgl/src/widgets/lv_textarea.c,324,True,lv_mem_free(ta->placeholder_txt);
+components/lvgl/src/widgets/lv_textarea.c,330,True,"ta->placeholder_txt = lv_mem_realloc(ta->placeholder_txt, txt_len + 1);"
+components/lvgl/src/widgets/lv_textarea.c,417,True,ta->pwd_tmp = lv_mem_alloc(len + 1);
+components/lvgl/src/widgets/lv_textarea.c,431,True,lv_mem_free(ta->pwd_tmp);
+components/lvgl/src/widgets/lv_textarea.c,446,True,lv_mem_free(ta->pwd_bullet);
+components/lvgl/src/widgets/lv_textarea.c,454,True,"ta->pwd_bullet = lv_mem_realloc(ta->pwd_bullet, txt_len + 1);"
+components/lvgl/src/widgets/lv_textarea.c,848,True,lv_mem_free(ta->pwd_tmp);
+components/lvgl/src/widgets/lv_textarea.c,852,True,lv_mem_free(ta->pwd_bullet);
+components/lvgl/src/widgets/lv_textarea.c,856,True,lv_mem_free(ta->placeholder_txt);
+components/lvgl/src/draw/sdl/lv_draw_sdl.c,78,True,draw_ctx_sdl->internals = lv_mem_alloc(sizeof(lv_draw_sdl_context_internals_t));
+components/lvgl/src/draw/sdl/lv_draw_sdl.c,87,True,lv_mem_free(draw_ctx_sdl->internals);
+components/lvgl/src/draw/sdl/lv_draw_sdl_composite.c,205,True,tex_size = lv_mem_alloc(sizeof(lv_point_t));
+components/lvgl/src/draw/sdl/lv_draw_sdl_composite.c,210,True,lv_mem_free(tex_size);
+components/lvgl/src/draw/sdl/lv_draw_sdl_img.c,161,True,lv_mem_free(header);
+components/lvgl/src/draw/sdl/lv_draw_sdl_label.c,125,True,uint8_t * buf = lv_mem_alloc(g.box_w * g.box_h);
+components/lvgl/src/draw/sdl/lv_draw_sdl_label.c,130,True,lv_mem_free(buf);
+components/lvgl/src/draw/sw/lv_draw_sw_gradient.c,191,True,item = lv_mem_alloc(req_size);
+components/lvgl/src/draw/sw/lv_draw_sw_gradient.c,235,True,lv_mem_free(LV_GC_ROOT(_lv_grad_cache_mem));
+components/lvgl/src/draw/sw/lv_draw_sw_gradient.c,242,True,lv_mem_free(LV_GC_ROOT(_lv_grad_cache_mem));
+components/lvgl/src/draw/sw/lv_draw_sw_gradient.c,243,True,grad_cache_end = LV_GC_ROOT(_lv_grad_cache_mem) = lv_mem_alloc(max_bytes);
+components/lvgl/src/draw/sw/lv_draw_sw_gradient.c,342,True,lv_mem_free(grad);
+components/lvgl/src/draw/sw/lv_draw_sw_layer.c,56,True,layer_sw_ctx->base_draw.buf = lv_mem_alloc(layer_sw_ctx->buf_size_bytes);
+components/lvgl/src/draw/sw/lv_draw_sw_layer.c,61,True,layer_sw_ctx->base_draw.buf = lv_mem_alloc(layer_sw_ctx->buf_size_bytes);
+components/lvgl/src/draw/sw/lv_draw_sw_layer.c,75,True,layer_sw_ctx->base_draw.buf = lv_mem_alloc(layer_sw_ctx->buf_size_bytes);
+components/lvgl/src/draw/sw/lv_draw_sw_layer.c,145,True,lv_mem_free(layer_ctx->buf);
+components/lvgl/src/draw/nxp/pxp/lv_gpu_nxp_pxp_osa.c,139,True,s_pxpIdleSem = xSemaphoreCreateBinary();
+components/lvgl/src/extra/libs/bmp/lv_bmp.c,174,True,dsc->user_data = lv_mem_alloc(sizeof(bmp_dsc_t));
+components/lvgl/src/extra/libs/bmp/lv_bmp.c,250,True,lv_mem_free(dsc->user_data);
+components/lvgl/src/extra/libs/ffmpeg/lv_ffmpeg.c,678,True,"struct ffmpeg_context_s * ffmpeg_ctx = calloc(1, sizeof(struct ffmpeg_context_s));"
+components/lvgl/src/extra/libs/ffmpeg/lv_ffmpeg.c,807,True,free(ffmpeg_ctx);
+components/lvgl/src/extra/libs/freetype/lv_freetype.c,356,True,lv_font_fmt_ft_dsc_t * dsc = lv_mem_alloc(need_size);
+components/lvgl/src/extra/libs/freetype/lv_freetype.c,399,True,lv_mem_free(dsc);
+components/lvgl/src/extra/libs/freetype/lv_freetype.c,413,True,lv_mem_free(dsc);
+components/lvgl/src/extra/libs/freetype/lv_freetype.c,446,True,lv_mem_free(pface);
+components/lvgl/src/extra/libs/freetype/lv_freetype.c,537,True,lv_font_fmt_ft_dsc_t * dsc = lv_mem_alloc(need_size);
+components/lvgl/src/extra/libs/freetype/lv_freetype.c,597,True,lv_mem_free(dsc);
+components/lvgl/src/extra/libs/freetype/lv_freetype.c,613,True,lv_mem_free(dsc);
+components/lvgl/src/extra/libs/freetype/lv_freetype.c,648,True,lv_mem_free((void *)refer->name);
+components/lvgl/src/extra/libs/freetype/lv_freetype.c,649,True,lv_mem_free(refer);
+components/lvgl/src/extra/libs/freetype/lv_freetype.c,674,True,refer->name = lv_mem_alloc(len);
+components/lvgl/src/extra/libs/freetype/lv_freetype.c,681,True,lv_mem_free(refer);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_fatfs.c,113,True,FIL * f = lv_mem_alloc(sizeof(FIL));
+components/lvgl/src/extra/libs/fsdrv/lv_fs_fatfs.c,121,True,lv_mem_free(f);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_fatfs.c,137,True,lv_mem_free(file_p);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_fatfs.c,228,True,DIR * d = lv_mem_alloc(sizeof(DIR));
+components/lvgl/src/extra/libs/fsdrv/lv_fs_fatfs.c,233,True,lv_mem_free(d);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_fatfs.c,279,True,lv_mem_free(dir_p);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_littlefs.c,138,True,lfs_file_t * file_p = lv_mem_alloc(sizeof(lfs_file_t));
+components/lvgl/src/extra/libs/fsdrv/lv_fs_littlefs.c,144,True,lv_mem_free(file_p);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_littlefs.c,162,True,lv_mem_free(file_p);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_littlefs.c,163,True,/*lv_mem_free( lfs_p );*/ /*allocated and freed by outside-code*/
+components/lvgl/src/extra/libs/fsdrv/lv_fs_littlefs.c,264,True,lfs_dir_t * dir_p = lv_mem_alloc(sizeof(lfs_dir_t));
+components/lvgl/src/extra/libs/fsdrv/lv_fs_littlefs.c,269,True,lv_mem_free(dir_p);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_littlefs.c,320,True,lv_mem_free(rddir_p);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_stdio.c,208,True,dir_handle_t * handle = (dir_handle_t *)lv_mem_alloc(sizeof(dir_handle_t));
+components/lvgl/src/extra/libs/fsdrv/lv_fs_stdio.c,215,True,lv_mem_free(handle);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_stdio.c,245,True,lv_mem_free(handle);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_stdio.c,317,True,lv_mem_free(handle);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_win32.c,361,True,dir_handle_t * handle = (dir_handle_t *)lv_mem_alloc(sizeof(dir_handle_t));
+components/lvgl/src/extra/libs/fsdrv/lv_fs_win32.c,392,True,lv_mem_free(handle);
+components/lvgl/src/extra/libs/fsdrv/lv_fs_win32.c,455,True,lv_mem_free(handle);
+components/lvgl/src/extra/libs/gif/gifdec.c,111,True,gif = lv_mem_alloc(sizeof(gd_GIF) + 5 * width * height);
+components/lvgl/src/extra/libs/gif/gifdec.c,113,True,gif = lv_mem_alloc(sizeof(gd_GIF) + 4 * width * height);
+components/lvgl/src/extra/libs/gif/gifdec.c,115,True,gif = lv_mem_alloc(sizeof(gd_GIF) + 3 * width * height);
+components/lvgl/src/extra/libs/gif/gifdec.c,304,True,Table *table = lv_mem_alloc(sizeof(*table) + sizeof(Entry) * init_bulk);
+components/lvgl/src/extra/libs/gif/gifdec.c,325,True,"table = lv_mem_realloc(table, sizeof(*table) + sizeof(Entry) * table->bulk);"
+components/lvgl/src/extra/libs/gif/gifdec.c,426,True,lv_mem_free(table);
+components/lvgl/src/extra/libs/gif/gifdec.c,456,True,lv_mem_free(table);
+components/lvgl/src/extra/libs/gif/gifdec.c,626,True,lv_mem_free(gif);
+components/lvgl/src/extra/libs/png/lodepng.c,78,True,return lv_mem_alloc(size);
+components/lvgl/src/extra/libs/png/lodepng.c,86,True,"return lv_mem_realloc(ptr, new_size);"
+components/lvgl/src/extra/libs/png/lodepng.c,90,True,lv_mem_free(ptr);
+components/lvgl/src/extra/libs/png/lodepng.h,121,False,Must be freed after usage with free(*out).
+components/lvgl/src/extra/libs/png/lodepng.h,170,False,Must be freed after usage with free(*out).
+components/lvgl/src/extra/libs/png/lodepng.h,1218,False,The C version uses buffers allocated with alloc that you need to free()
+components/lvgl/src/extra/libs/png/lodepng.h,1753,False,free(image);
+components/lvgl/src/extra/libs/png/lv_png.c,174,True,lv_mem_free(png_data); /*Free the loaded file*/
+components/lvgl/src/extra/libs/png/lv_png.c,177,True,lv_mem_free(img_data);
+components/lvgl/src/extra/libs/png/lv_png.c,200,True,lv_mem_free(img_data);
+components/lvgl/src/extra/libs/png/lv_png.c,222,True,lv_mem_free((uint8_t *)dsc->img_data);
+components/lvgl/src/extra/libs/qrcode/lv_qrcode.c,104,True,uint8_t * qr0 = lv_mem_alloc(qrcodegen_BUFFER_LEN_FOR_VERSION(qr_version));
+components/lvgl/src/extra/libs/qrcode/lv_qrcode.c,106,True,uint8_t * data_tmp = lv_mem_alloc(qrcodegen_BUFFER_LEN_FOR_VERSION(qr_version));
+components/lvgl/src/extra/libs/qrcode/lv_qrcode.c,116,True,lv_mem_free(qr0);
+components/lvgl/src/extra/libs/qrcode/lv_qrcode.c,117,True,lv_mem_free(data_tmp);
+components/lvgl/src/extra/libs/qrcode/lv_qrcode.c,176,True,lv_mem_free(qr0);
+components/lvgl/src/extra/libs/qrcode/lv_qrcode.c,177,True,lv_mem_free(data_tmp);
+components/lvgl/src/extra/libs/qrcode/lv_qrcode.c,195,True,uint8_t * buf = lv_mem_alloc(buf_size);
+components/lvgl/src/extra/libs/qrcode/lv_qrcode.c,210,True,lv_mem_free((void *)img->data);
+components/lvgl/src/extra/libs/rlottie/lv_rlottie.c,130,True,rlottie->allocated_buf = lv_mem_alloc(allocaled_buf_size);
+components/lvgl/src/extra/libs/rlottie/lv_rlottie.c,176,True,lv_mem_free(rlottie->allocated_buf);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,182,True,uint8_t * workb_temp = lv_mem_alloc(TJPGD_WORKBUFF_SIZE);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,205,True,lv_mem_free(workb_temp);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,253,True,uint8_t * workb_temp = lv_mem_alloc(TJPGD_WORKBUFF_SIZE);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,267,True,lv_mem_free(workb_temp);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,353,True,sjpeg =  lv_mem_alloc(sizeof(SJPEG));
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,380,True,sjpeg->frame_base_array = lv_mem_alloc(sizeof(uint8_t *) * sjpeg->sjpeg_total_frames);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,398,True,sjpeg->frame_cache = (void *)lv_mem_alloc(sjpeg->sjpeg_x_res * sjpeg->sjpeg_single_frame_height * 3/*2*/);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,406,True,sjpeg->workb =   lv_mem_alloc(TJPGD_WORKBUFF_SIZE);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,413,True,sjpeg->tjpeg_jd =   lv_mem_alloc(sizeof(JDEC));
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,426,True,uint8_t * workb_temp = lv_mem_alloc(TJPGD_WORKBUFF_SIZE);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,440,True,lv_mem_free(workb_temp);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,448,True,sjpeg->frame_base_array = lv_mem_alloc(sizeof(uint8_t *) * sjpeg->sjpeg_total_frames);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,460,True,sjpeg->frame_cache = (void *)lv_mem_alloc(sjpeg->sjpeg_x_res * sjpeg->sjpeg_single_frame_height * 3);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,469,True,sjpeg->workb =   lv_mem_alloc(TJPGD_WORKBUFF_SIZE);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,476,True,sjpeg->tjpeg_jd =   lv_mem_alloc(sizeof(JDEC));
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,494,True,lv_mem_free(workb_temp);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,526,True,sjpeg = lv_mem_alloc(sizeof(SJPEG));
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,553,True,sjpeg->frame_base_array = NULL;//lv_mem_alloc( sizeof(uint8_t *) * sjpeg->sjpeg_total_frames );
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,554,True,sjpeg->frame_base_offset = lv_mem_alloc(sizeof(int) * sjpeg->sjpeg_total_frames);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,577,True,sjpeg->frame_cache = (void *)lv_mem_alloc(sjpeg->sjpeg_x_res * sjpeg->sjpeg_single_frame_height * 3);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,585,True,sjpeg->workb =   lv_mem_alloc(TJPGD_WORKBUFF_SIZE);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,592,True,sjpeg->tjpeg_jd =    lv_mem_alloc(sizeof(JDEC));
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,615,True,sjpeg = lv_mem_alloc(sizeof(SJPEG));
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,627,True,uint8_t * workb_temp = lv_mem_alloc(TJPGD_WORKBUFF_SIZE);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,644,True,lv_mem_free(workb_temp);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,653,True,sjpeg->frame_base_offset =  lv_mem_alloc(sizeof(uint8_t *) * sjpeg->sjpeg_total_frames);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,664,True,sjpeg->frame_cache = (void *)lv_mem_alloc(sjpeg->sjpeg_x_res * sjpeg->sjpeg_single_frame_height * 3);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,673,True,sjpeg->workb =   lv_mem_alloc(TJPGD_WORKBUFF_SIZE);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,680,True,sjpeg->tjpeg_jd =   lv_mem_alloc(sizeof(JDEC));
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,694,True,if(dsc->user_data) lv_mem_free(dsc->user_data);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,895,True,if(sjpeg->frame_cache) lv_mem_free(sjpeg->frame_cache);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,896,True,if(sjpeg->frame_base_array) lv_mem_free(sjpeg->frame_base_array);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,897,True,if(sjpeg->frame_base_offset) lv_mem_free(sjpeg->frame_base_offset);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,898,True,if(sjpeg->tjpeg_jd) lv_mem_free(sjpeg->tjpeg_jd);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,899,True,if(sjpeg->workb) lv_mem_free(sjpeg->workb);
+components/lvgl/src/extra/libs/sjpg/lv_sjpg.c,907,True,lv_mem_free(sjpeg);
+components/lvgl/src/extra/libs/tiny_ttf/lv_tiny_ttf.c,14,True,"#define STBTT_malloc(x, u) ((void)(u), lv_mem_alloc(x))"
+components/lvgl/src/extra/libs/tiny_ttf/lv_tiny_ttf.c,15,True,"#define STBTT_free(x, u) ((void)(u), lv_mem_free(x))"
+components/lvgl/src/extra/libs/tiny_ttf/lv_tiny_ttf.c,16,True,#define TTF_MALLOC(x) (lv_mem_alloc(x))
+components/lvgl/src/extra/libs/tiny_ttf/lv_tiny_ttf.c,17,True,#define TTF_FREE(x) (lv_mem_free(x))
+components/lvgl/src/extra/libs/tiny_ttf/lv_tiny_ttf.c,158,True,buffer = lv_mem_alloc(szb);
+components/lvgl/src/extra/libs/tiny_ttf/lv_tiny_ttf.c,166,True,lv_mem_free(buffer);
+components/lvgl/src/extra/libs/tiny_ttf/stb_truetype_htcw.h,502,False,"#define STBTT_malloc(x,u)  ((void)(u),malloc(x))"
+components/lvgl/src/extra/libs/tiny_ttf/stb_truetype_htcw.h,503,False,"#define STBTT_free(x,u)    ((void)(u),free(x))"
+components/lvgl/src/extra/others/fragment/lv_fragment.c,29,True,lv_fragment_t * instance = lv_mem_alloc(cls->instance_size);
+components/lvgl/src/extra/others/fragment/lv_fragment.c,55,True,lv_mem_free(fragment);
+components/lvgl/src/extra/others/fragment/lv_fragment_manager.c,66,True,lv_fragment_manager_t * instance = lv_mem_alloc(sizeof(lv_fragment_manager_t));
+components/lvgl/src/extra/others/fragment/lv_fragment_manager.c,84,True,lv_mem_free(manager);
+components/lvgl/src/extra/others/fragment/lv_fragment_manager.c,141,True,lv_mem_free(item);
+components/lvgl/src/extra/others/fragment/lv_fragment_manager.c,147,True,lv_mem_free(states);
+components/lvgl/src/extra/others/gridnav/lv_gridnav.c,66,True,lv_gridnav_dsc_t * dsc = lv_mem_alloc(sizeof(lv_gridnav_dsc_t));
+components/lvgl/src/extra/others/gridnav/lv_gridnav.c,80,True,lv_mem_free(dsc);
+components/lvgl/src/extra/others/imgfont/lv_imgfont.c,55,True,imgfont_dsc_t * dsc = (imgfont_dsc_t *)lv_mem_alloc(size);
+components/lvgl/src/extra/others/imgfont/lv_imgfont.c,82,True,lv_mem_free(dsc);
+components/lvgl/src/extra/others/monkey/lv_monkey.c,70,True,lv_monkey_t * monkey = lv_mem_alloc(sizeof(lv_monkey_t));
+components/lvgl/src/extra/others/monkey/lv_monkey.c,131,True,lv_mem_free(monkey);
+components/lvgl/src/extra/others/msg/lv_msg.c,94,True,lv_mem_free(s);
+components/lvgl/src/extra/others/snapshot/lv_snapshot.c,131,True,lv_draw_ctx_t * draw_ctx = lv_mem_alloc(obj_disp->driver->draw_ctx_size);
+components/lvgl/src/extra/others/snapshot/lv_snapshot.c,148,True,lv_mem_free(draw_ctx);
+components/lvgl/src/extra/others/snapshot/lv_snapshot.c,170,True,void * buf = lv_mem_alloc(buf_size);
+components/lvgl/src/extra/others/snapshot/lv_snapshot.c,176,True,lv_img_dsc_t * dsc = lv_mem_alloc(sizeof(lv_img_dsc_t));
+components/lvgl/src/extra/others/snapshot/lv_snapshot.c,179,True,lv_mem_free(buf);
+components/lvgl/src/extra/others/snapshot/lv_snapshot.c,184,True,lv_mem_free(buf);
+components/lvgl/src/extra/others/snapshot/lv_snapshot.c,185,True,lv_mem_free(dsc);
+components/lvgl/src/extra/others/snapshot/lv_snapshot.c,205,True,lv_mem_free((void *)dsc->data);
+components/lvgl/src/extra/others/snapshot/lv_snapshot.c,207,True,lv_mem_free(dsc);
+components/lvgl/src/extra/themes/basic/lv_theme_basic.c,148,True,LV_GC_ROOT(_lv_theme_basic_styles) = lv_mem_alloc(sizeof(my_theme_styles_t));
+components/lvgl/src/extra/themes/default/lv_theme_default.c,654,True,LV_GC_ROOT(_lv_theme_default_styles) = lv_mem_alloc(sizeof(my_theme_styles_t));
+components/lvgl/src/extra/themes/mono/lv_theme_mono.c,178,True,LV_GC_ROOT(_lv_theme_default_styles) = lv_mem_alloc(sizeof(my_theme_styles_t));
+components/lvgl/src/extra/widgets/chart/lv_chart.c,85,True,lv_mem_free(ser->x_points);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,93,True,ser->x_points = lv_mem_alloc(sizeof(lv_point_t) * chart->point_cnt);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,355,True,ser->y_points = lv_mem_alloc(sizeof(lv_coord_t) * chart->point_cnt);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,359,True,ser->x_points = lv_mem_alloc(sizeof(lv_coord_t) * chart->point_cnt);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,364,True,lv_mem_free(ser);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,390,True,if(!series->y_ext_buf_assigned && series->y_points) lv_mem_free(series->y_points);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,391,True,if(!series->x_ext_buf_assigned && series->x_points) lv_mem_free(series->x_points);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,394,True,lv_mem_free(series);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,599,True,if(!ser->y_ext_buf_assigned && ser->y_points) lv_mem_free(ser->y_points);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,610,True,if(!ser->x_ext_buf_assigned && ser->x_points) lv_mem_free(ser->x_points);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,683,True,if(!ser->y_ext_buf_assigned) lv_mem_free(ser->y_points);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,686,True,lv_mem_free(ser);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,694,True,lv_mem_free(cur);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,1752,True,lv_coord_t * new_points = lv_mem_alloc(sizeof(lv_coord_t) * cnt);
+components/lvgl/src/extra/widgets/chart/lv_chart.c,1773,True,lv_mem_free((*a));
+components/lvgl/src/extra/widgets/chart/lv_chart.c,1777,True,"(*a) = lv_mem_realloc((*a), sizeof(lv_coord_t) * cnt);"
+components/lvgl/src/extra/widgets/keyboard/lv_keyboard.c,416,True,lv_btnmatrix_ctrl_t * ctrl_map = lv_mem_alloc(btnm->btn_cnt * sizeof(lv_btnmatrix_ctrl_t));
+components/lvgl/src/extra/widgets/keyboard/lv_keyboard.c,426,True,lv_mem_free(ctrl_map);
+components/lvgl/src/extra/widgets/menu/lv_menu.c,128,True,page->title = lv_mem_alloc(strlen(title) + 1);
+components/lvgl/src/extra/widgets/menu/lv_menu.c,180,True,lv_mem_free(act_hist);
+components/lvgl/src/extra/widgets/menu/lv_menu.c,379,True,lv_menu_load_page_event_data_t * event_data = lv_mem_alloc(sizeof(lv_menu_load_page_event_data_t));
+components/lvgl/src/extra/widgets/menu/lv_menu.c,568,True,lv_mem_free(page->title);
+components/lvgl/src/extra/widgets/menu/lv_menu.c,703,True,lv_mem_free(event_data);
+components/lvgl/src/extra/widgets/menu/lv_menu.c,732,True,lv_mem_free(act_hist);
+components/lvgl/src/extra/widgets/menu/lv_menu.c,740,True,lv_mem_free(prev_hist);
+components/lvgl/src/extra/widgets/span/lv_span.c,130,True,lv_mem_free(cur_span->txt);
+components/lvgl/src/extra/widgets/span/lv_span.c,133,True,lv_mem_free(cur_span);
+components/lvgl/src/extra/widgets/span/lv_span.c,152,True,span->txt = lv_mem_alloc(strlen(text) + 1);
+components/lvgl/src/extra/widgets/span/lv_span.c,155,True,"span->txt = lv_mem_realloc(span->txt, strlen(text) + 1);"
+components/lvgl/src/extra/widgets/span/lv_span.c,170,True,lv_mem_free(span->txt);
+components/lvgl/src/extra/widgets/span/lv_span.c,523,True,lv_mem_free(cur_span->txt);
+components/lvgl/src/extra/widgets/span/lv_span.c,526,True,lv_mem_free(cur_span);
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,85,True,new_map = lv_mem_alloc((tab_id + 1) * sizeof(const char *));
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,87,True,new_map[tab_id - 1] = lv_mem_alloc(strlen(name) + 1);
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,93,True,new_map = lv_mem_alloc((tab_id * 2) * sizeof(const char *));
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,96,True,new_map[0] = lv_mem_alloc(strlen(name) + 1);
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,102,True,new_map[tab_id * 2 - 2] = lv_mem_alloc(strlen(name) + 1);
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,109,True,lv_mem_free(old_map);
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,132,True,lv_mem_free((void *)tabview->map[id]);
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,133,True,tabview->map[id] = lv_mem_alloc(strlen(new_name) + 1);
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,229,True,tabview->map = lv_mem_alloc(sizeof(const char *));
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,276,True,lv_mem_free((void *)tabview->map[i]);
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,282,True,lv_mem_free((void *)tabview->map[i * 2]);
+components/lvgl/src/extra/widgets/tabview/lv_tabview.c,287,True,lv_mem_free(tabview->map);

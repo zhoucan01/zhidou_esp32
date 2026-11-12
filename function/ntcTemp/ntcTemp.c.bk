@@ -1,0 +1,186 @@
+#include "ntcTemp.h"
+#include "DataCenter.h"
+#include <stddef.h>
+
+typedef struct {
+    float adc;
+    float temperature;
+} NtcTempPoint;
+
+typedef struct {
+    int gear;
+    const NtcTempPoint *points;
+    size_t count;
+    float min_adc;
+    float max_adc;
+} NtcTempGearCurve;
+
+static const NtcTempPoint table[] = {
+#if MACHINE == 1
+#include "tables/NTC2/ntcTemp_table.inc"
+#elif MACHINE == 2
+#include "tables/NTC2/ntcTemp_machine2_table.inc"
+#elif MACHINE == 4
+#include "tables/NTC2/ntcTemp_machine4_table.inc"
+#elif MACHINE == 6
+#include "tables/NTC2/ntcTemp_machine6_table.inc"
+#endif
+};
+
+#define TABLE_COUNT (sizeof(table) / sizeof(table[0]))
+
+static const NtcTempPoint ntc1_table[] = {
+#include "tables/NTC2/ntcTemp_ntc1_table.inc"
+};
+
+#if MACHINE == 4
+static const NtcTempPoint ntc3_table[] = {
+#include "tables/NTC3/ntcTemp_machine4_ntc3_table.inc"
+};
+#define NTC3_TABLE_COUNT (sizeof(ntc3_table) / sizeof(ntc3_table[0]))
+#endif
+
+#define NTC1_TABLE_COUNT (sizeof(ntc1_table) / sizeof(ntc1_table[0]))
+
+#if MACHINE == 1
+/* 1号机专用：ADC × 有效加热档位二维标定表。 */
+#include "tables/NTC2/ntcTemp_2d_table.inc"
+
+#define NTC2_GEAR_TABLE_COUNT \
+    (sizeof(ntc2_gear_tables) / sizeof(ntc2_gear_tables[0]))
+#endif
+
+bool ntcTempIsInRange(uint32_t adc)
+{
+#if MACHINE == 4
+    const double value = (double)adc;
+    return value >= ntc3_table[0].adc &&
+           value <= ntc3_table[NTC3_TABLE_COUNT - 1U].adc;
+#else
+    const double value = (double)adc;
+    if (value >= table[0].adc && value <= table[TABLE_COUNT - 1U].adc) {
+        return true;
+    }
+#if MACHINE == 1
+    return value >= NTC2_CALIBRATED_ADC_MIN &&
+           value <= NTC2_CALIBRATED_ADC_MAX;
+#else
+    return false;
+#endif
+#endif
+}
+
+bool ntcTempNtc1IsInRange(uint32_t adc)
+{
+    return (double)adc >= ntc1_table[0].adc &&
+           (double)adc <= ntc1_table[NTC1_TABLE_COUNT - 1U].adc;
+}
+
+static float temperature_from_adc(const NtcTempPoint *points, size_t count,
+                                  uint32_t adc)
+{
+    const float value = (float)adc;
+    if (value <= points[0].adc) {
+        return points[0].temperature;
+    }
+    if (value >= points[count - 1U].adc) {
+        return points[count - 1U].temperature;
+    }
+
+    size_t low = 0U;
+    size_t high = count - 1U;
+    while (high - low > 1U) {
+        const size_t middle = low + (high - low) / 2U;
+        if (value < points[middle].adc) {
+            high = middle;
+        } else {
+            low = middle;
+        }
+    }
+
+    const float fraction = (value - points[low].adc) /
+                           (points[high].adc - points[low].adc);
+    return points[low].temperature + fraction *
+           (points[high].temperature - points[low].temperature);
+}
+
+#if MACHINE == 1
+static float temperature_from_gear_curves(uint32_t adc, int gear)
+{
+    const float value = (float)adc;
+    size_t lower = 0U;
+    while (lower + 1U < NTC2_GEAR_TABLE_COUNT &&
+           gear > ntc2_gear_tables[lower + 1U].gear) {
+        ++lower;
+    }
+
+    const NtcTempGearCurve *low_curve = &ntc2_gear_tables[lower];
+    if (gear <= low_curve->gear || lower + 1U == NTC2_GEAR_TABLE_COUNT) {
+        if (value < low_curve->min_adc || value > low_curve->max_adc) {
+            return temperature_from_adc(table, TABLE_COUNT, adc);
+        }
+        return temperature_from_adc(low_curve->points, low_curve->count, adc);
+    }
+
+    const NtcTempGearCurve *high_curve = &ntc2_gear_tables[lower + 1U];
+    if (gear == high_curve->gear) {
+        if (value < high_curve->min_adc || value > high_curve->max_adc) {
+            return temperature_from_adc(table, TABLE_COUNT, adc);
+        }
+        return temperature_from_adc(high_curve->points, high_curve->count, adc);
+    }
+    if (value < low_curve->min_adc || value > low_curve->max_adc ||
+        value < high_curve->min_adc || value > high_curve->max_adc) {
+        return temperature_from_adc(table, TABLE_COUNT, adc);
+    }
+
+    const float low_temperature =
+        temperature_from_adc(low_curve->points, low_curve->count, adc);
+    const float high_temperature =
+        temperature_from_adc(high_curve->points, high_curve->count, adc);
+    const float fraction = (float)(gear - low_curve->gear) /
+                           (float)(high_curve->gear - low_curve->gear);
+    return low_temperature + fraction * (high_temperature - low_temperature);
+}
+#endif
+
+float ntcTempGetTemperature(void)
+{
+#if MACHINE == 4
+    const uint32_t adc = g_DataPool.ntc3Raw;
+    if ((double)adc <= ntc3_table[0].adc) {
+        return 98.0f;
+    }
+    const float temperature = temperature_from_adc(ntc3_table, NTC3_TABLE_COUNT,
+                                                    adc);
+    return temperature >= 97.9f ? 98.0f : temperature;
+#else
+    const uint32_t adc = g_DataPool.ntc2FilteredRaw;
+#if MACHINE == 1
+    /* 1号机：ADC × 有效加热档位二维查表；曲线未覆盖处自动回退一维表。 */
+    int gear = 0;
+    if (g_DataPool.powerEnabled) {
+        if (g_DataPool.powerHeater1Enabled) {
+            gear = (int)g_DataPool.powerHeater1Gear;
+        }
+        if (g_DataPool.powerHeater2Enabled &&
+            (int)g_DataPool.powerHeater2Gear > gear) {
+            gear = (int)g_DataPool.powerHeater2Gear;
+        }
+    }
+    const float temperature = temperature_from_gear_curves(adc, gear);
+#else
+    /* One-dimensional machine table: the high ADC endpoint reaches 98 C. */
+    if ((double)adc <= table[0].adc) {
+        return 98.0f;
+    }
+    const float temperature = temperature_from_adc(table, TABLE_COUNT, adc);
+#endif
+    return temperature >= 97.9f ? 98.0f : temperature;
+#endif
+}
+
+float ntcTempGetNtc1Temperature(void)
+{
+    return temperature_from_adc(ntc1_table, NTC1_TABLE_COUNT, g_DataPool.ntc1Raw);
+}

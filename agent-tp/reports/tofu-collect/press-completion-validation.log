@@ -1,0 +1,2 @@
+PASS: actual TouFuPress contact/drain/form/fast/slow stages run;
+hold lasts exactly 600000 ms, final press stop occurs, no final rise/head-up/music/low-gear command

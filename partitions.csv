@@ -1,0 +1,17 @@
+# ESP-IDF Partition Table
+# Name, Type, SubType, Offset, Size, Flags
+nvs,data,nvs,0x9000,24K,
+otadata,data, ota,0xf000,0x2000,
+phy_init,data,phy,0x11000,4K,
+ota_0,app,ota_0,0x20000,0x7A3000,
+# OTA slot offsets are fixed; do not rely on auto offset when resizing slots.
+ota_1,app,ota_1,0x7D0000,0x7A3000,
+# Reserved gap 1: 0xF73000-0xF74000 (4K)
+User_Data,data,littlefs,0xF74000,56K,
+# Reserved gap 2: 0xF82000-0xF83000 (4K)
+#   0xF83000-0xF84000  OTA_Info     4K    OTA upgrade info struct
+#   0xF84000-0xFC2000  Firmware_1  248K  AT chip upgrade firmware
+#   0xFC2000-0x1000000 Firmware_2  248K  FU6815 chip upgrade firmware
+OTA_Info,data,undefined,0xF83000,4K,
+Firmware_1,data,undefined,0xF84000,248K,
+Firmware_2,data,undefined,0xFC2000,248K,

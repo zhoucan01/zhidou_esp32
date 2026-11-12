@@ -1,0 +1,17 @@
+﻿豆浆加热流程  温度端 / 档位 / 开停时间表
+===================================================================
+
+适用代码 : ESP32S3/function/SoyMilkMake/SoyMilkMake.c  ->  HeatSoyMilk()
+温度来源 : 站2 NTC1 原始 ADC  ->  function/ntcTemp  MACHINE=3 工况表
+开停节拍 : 1 秒 1 拍，表中时间单位均为秒
+
+段    温度端(℃)     档位   加热开(s)   加热停(s)  代码位置
+-------------------------------------------------------------------
+1     0  →  60        19        常开           —  SoyMilkMake.c:315
+2     60 →  80        10        常开           —  SoyMilkMake.c:329
+3     80 →  85        10           6           4  SoyMilkMake.c:342
+4     85 →  90         9           6          15  SoyMilkMake.c:359
+5     90 →  93         9           6           4  SoyMilkMake.c:376
+6     93 →  95         7           5           5  SoyMilkMake.c:393
+7     95 →  98         7           6           4  SoyMilkMake.c:410
+8     98 →  89         0        全关           —  SoyMilkMake.c:431

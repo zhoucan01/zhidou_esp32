@@ -1,0 +1,20 @@
+## IDF Component Manager Manifest File
+##
+## 注意：本项目已通过根 CMakeLists.txt 设置 IDF_COMPONENT_MANAGER=0 关闭组件管理器，
+## 所以此文件中的 dependencies 不再被解析，也不会触发任何网络访问。
+## lvgl / esp_lcd_st7796 / cmake_utilities 已作为本地组件存放在 components/ 目录下。
+dependencies:
+  ## Required IDF version
+  idf:
+    version: '>=4.1.0'
+  # # Put list of dependencies here
+  # # For components maintained by Espressif:
+  # component: "~1.0.0"
+  # # For 3rd party components:
+  # # username/component: ">=1.0.0,<2.0.0"
+  # # username2/component2:
+  # #   version: "~1.0.0"
+  # #   # For transient dependencies `public` flag can be set.
+  # #   # `public` flag doesn't have an effect dependencies of the `main` component.
+  # #   # All dependencies of `main` are public by default.
+  # #   public: true

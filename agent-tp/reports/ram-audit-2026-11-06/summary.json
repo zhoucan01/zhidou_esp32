@@ -1,0 +1,42 @@
+{
+  "scenes": 924,
+  "pages": 30,
+  "passes": 6,
+  "pool_bytes": 131072,
+  "normal_pool_peak": 34104,
+  "decoded_peak": 415776,
+  "ui_stack_psram": 8192,
+  "dma_draw_bytes": 76800,
+  "dma_fallback_static_bytes": 12800,
+  "ui_psram_reserved_plus_decoded_peak": 555040,
+  "baseline_internal_free": 94111,
+  "baseline_psram_free": 1704064,
+  "pool_peak_scene": {
+    "pass": "0",
+    "page": "12",
+    "selection": "0",
+    "decoded_live": "313584",
+    "decoded_scene_peak": "313584",
+    "pool_used": "18232",
+    "pool_largest_free": "112592",
+    "pool_scene_peak": "34104",
+    "layer_count": "4069"
+  },
+  "decoded_peak_scene": {
+    "pass": "0",
+    "page": "24",
+    "selection": "1",
+    "decoded_live": "331344",
+    "decoded_scene_peak": "415776",
+    "pool_used": "18264",
+    "pool_largest_free": "112592",
+    "pool_scene_peak": "28280",
+    "layer_count": "5235"
+  },
+  "largest_decoded_request": 244608,
+  "stable_pass_end_pool_used": 18272,
+  "stable_pass_end_decoded_live": 0,
+  "stable_child_count": 25,
+  "device_samples": 124,
+  "concurrent_radio_test": "not_performed_user_deferred"
+}

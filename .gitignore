@@ -1,0 +1,33 @@
+# Generated build output and project-local compiler cache (build/ccache/).
+build/
+
+# Component manager artifacts: the component manager is disabled
+# (IDF_COMPONENT_MANAGER=0 in the root CMakeLists.txt) and all third-party
+# components live under components/, so these files are no longer used.
+managed_components/
+dependencies.lock
+
+# Local caches must not be committed, including caches outside build/.
+ccache/
+.ccache/
+.cache/
+__pycache__/
+tools/soy_host/logs/
+# Agent workspace raw captures and machine-specific test datasets.
+agent-tp/data/captures/
+agent-tp/data/testdata/
+agent-tp/data/communication/
+*.py[cod]
+
+# Raw NTC calibration captures (logs/CSV/TXT). These are large local data
+# sets used only to regenerate the .inc tables; keep them out of Git.
+# Layout: testdata/ntcdata/<YYMMDD>/...
+testdata/
+# 工程本地 Python 工具环境可重新创建，不得提交到 Git。
+.venv/
+
+# Local intermediate data from NTC stage audits and recalibration.
+agent-tp/reports/ntc-stage-audit/selection.csv
+agent-tp/reports/ntc-recalibration-124212/*.csv
+agent-tp/reports/ntc-recalibration-124212/*.json
+agent-tp/reports/ntc-recalibration-124212/operating_table_before.inc

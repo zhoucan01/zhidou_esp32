@@ -1,0 +1,163 @@
+{
+  "csv": "agent-tp/data/captures/2026-10-29/20261029-233558-561446.csv",
+  "serial": "agent-tp/data/captures/2026-10-29/20261029-233558-561446-serial.txt",
+  "water_ml": 1150,
+  "first_gear7_ack": "2026-10-29T23:40:38.140000",
+  "counts": {
+    "ntc_total": 593,
+    "outside_heating_stage": 305,
+    "gear7_candidates": 288,
+    "reference_gap_over_2s": 14,
+    "motor_not_settled": 155,
+    "accepted": 92,
+    "rpm_nonzero_or_stale": 27
+  },
+  "metrics": [
+    {
+      "channel": 1,
+      "profile": [
+        1,
+        7,
+        5.0,
+        5.0,
+        1,
+        3.0,
+        3.0
+      ],
+      "samples": 34,
+      "nodes": 2,
+      "adc_range": [
+        1747.529,
+        1771.941
+      ],
+      "temperature_range": [
+        93.1638671875,
+        94.92842942345925
+      ],
+      "holdout_mae": 0.1684560633459467,
+      "holdout_max": 0.5431328124999908
+    },
+    {
+      "channel": 2,
+      "profile": [
+        1,
+        7,
+        5.0,
+        5.0,
+        1,
+        3.0,
+        3.0
+      ],
+      "samples": 34,
+      "nodes": 3,
+      "adc_range": [
+        1726.667,
+        1768.75
+      ],
+      "temperature_range": [
+        93.1638671875,
+        94.92842942345925
+      ],
+      "holdout_mae": 0.13891699585833198,
+      "holdout_max": 0.33013281249999693
+    },
+    {
+      "channel": 3,
+      "profile": [
+        1,
+        7,
+        5.0,
+        5.0,
+        1,
+        3.0,
+        3.0
+      ],
+      "samples": 34,
+      "nodes": 3,
+      "adc_range": [
+        1786.333,
+        1827.25
+      ],
+      "temperature_range": [
+        93.1638671875,
+        94.92842942345925
+      ],
+      "holdout_mae": 0.07044583454362753,
+      "holdout_max": 0.13613281249999432
+    },
+    {
+      "channel": 1,
+      "profile": [
+        1,
+        7,
+        6.0,
+        4.0,
+        1,
+        3.0,
+        3.0
+      ],
+      "samples": 58,
+      "nodes": 4,
+      "adc_range": [
+        1652.6,
+        1731
+      ],
+      "temperature_range": [
+        94.96234021632252,
+        97.98734817813765
+      ],
+      "holdout_mae": 0.08473566323011165,
+      "holdout_max": 0.2376597836774863
+    },
+    {
+      "channel": 2,
+      "profile": [
+        1,
+        7,
+        6.0,
+        4.0,
+        1,
+        3.0,
+        3.0
+      ],
+      "samples": 58,
+      "nodes": 3,
+      "adc_range": [
+        1650.737,
+        1708.625
+      ],
+      "temperature_range": [
+        94.96234021632252,
+        97.98734817813765
+      ],
+      "holdout_mae": 0.16764909363687033,
+      "holdout_max": 0.4876597836774863
+    },
+    {
+      "channel": 3,
+      "profile": [
+        1,
+        7,
+        6.0,
+        4.0,
+        1,
+        3.0,
+        3.0
+      ],
+      "samples": 58,
+      "nodes": 3,
+      "adc_range": [
+        1709.636,
+        1770
+      ],
+      "temperature_range": [
+        94.96234021632252,
+        97.98734817813765
+      ],
+      "holdout_mae": 0.10564160046305915,
+      "holdout_max": 0.43765978367748914
+    }
+  ],
+  "preserved_nodes": 283,
+  "added_nodes": 18
+}

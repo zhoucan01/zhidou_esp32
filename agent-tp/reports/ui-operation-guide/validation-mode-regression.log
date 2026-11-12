@@ -1,0 +1,54 @@
+Initializing LVGL
+[Warn]	(0.000, +0)	 lv_init: Object sanity checks are enabled via LV_USE_ASSERT_OBJ which makes LVGL much slower 	(in lv_obj.c line #177)
+PASS: 100 real layer allocation failures, no crash/leak/context changes; recovery buffer cleared
+Render: tofu_continue
+Render: tofu_back
+Render: clean_select
+Render: tofu_stop_default_keep
+Render: tofu_stop_selected_stop
+PASS: all four Tofu firmness levels default to Keep Making on stop-dialog entry, forward selects Stop, reverse selects Keep, endpoints never wrap, redraw preserves focus and Keep resumes without stop commands
+PASS: physical encoder directions on all 19 navigable pages, circular selectors wrap with Back reachable, ordinary buttons stop at endpoints, rapid-turn reversal and safe return
+Render: select
+Render: select_oat
+PASS: recipe 0 description centered after rotation
+Render: select_nut
+PASS: recipe 1 description centered after rotation
+Render: select_nut
+Render: select_soy
+PASS: recipe 2 description centered after rotation
+Render: select_custom
+PASS: recipe 3 description centered after rotation
+Render: options
+Render: options_oat_cook_hint
+Render: options_soy_cook_fixed
+Render: options_edit_blend
+Render: options_edit_volume
+Render: add
+Render: check_missing
+Render: check_ready
+Render: making
+Render: stop_confirm
+Render: stopping
+Render: stopped
+Render: ready_filter
+Render: ready_no_filter
+PASS: real LVGL render, cyclic recipe navigation, bounded options/flow navigation, bounded numeric edits/arrows, cyclic booleans, Soy Cook locked On, sensor gates, normal/validation lifecycle, stopping lockout, Tofu state isolation
+PASS: Rinse/Deep Clean completion, continue, Stop opens Screen7 until stopped, Screen7 input lockout, unchanged long-press path
+PASS: shared UI test mode, all sensor bypasses, Tofu/PlantMilk/Rinse/Deep Clean completion, explicit stops and blocked encoder long presses without hardware commands
+PASS: external Tofu/Milk/Soy Milk/Rinse/Deep Clean navigation, completion, no duplicate start, long-press blocking, test-mode isolation
+PASS: production sensor snapshot reader, startup invalid data, 1-second timeout boundary, recovery, active-low inputs and stale-button startup lockout
+PASS: all Tofu/PlantMilk result Clean buttons open Start Cleaning without hardware commands; explicit Start runs Deep Clean, with sensor gates and Back preserved
+Render: tofu_check_back
+Render: tofu_check_ready_focus
+Render: press_check_back
+Render: press_check_ready_focus
+Render: milk_check_back
+Render: rinse_check_back
+Render: clean_check_back
+PASS: Tofu checks automatically focus Continue/Start on readiness and entry, preserve manual Back during redraw, and Continue opens the focused Start page without starting hardware
+PASS: all 5 sensor-gated pages force and visibly highlight Back for every failed sensor, reject encoder/direct focus, restore navigation on recovery, and return without hardware commands
+Render: blend_01_00
+Render: blend_01_15
+PASS: Blending Time 00:30..03:00 keeps label bounds and arrows fixed; 01:00 to 01:15 leaves every minute/colon pixel unchanged
+Render: select_custom_final
+PASS: 200 recipe switches, 2880 layers, largest=14592 B; pool=131072 B, peak=116610 B, largest free=112592 B

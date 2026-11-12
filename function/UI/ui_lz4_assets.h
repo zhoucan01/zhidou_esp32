@@ -1,0 +1,238 @@
+#ifndef UI_LZ4_ASSETS_H
+#define UI_LZ4_ASSETS_H
+
+/*
+ * 压缩 UI 资源声明及逻辑页面别名。
+ *
+ * 仅在 ui.h 之后包含此头文件。生成的图片源文件
+ * 直接包含 ui.h，因此这些别名不会重命名图片定义。
+ */
+#define UI_LZ4_ASSET(name) LV_IMG_DECLARE(name##_lz4)
+
+UI_LZ4_ASSET(ui_img_1_png);
+UI_LZ4_ASSET(ui_img_1036112462);
+UI_LZ4_ASSET(ui_img_1092992141);
+UI_LZ4_ASSET(ui_img_1195725596);
+UI_LZ4_ASSET(ui_img_1205051221);
+UI_LZ4_ASSET(ui_img_1272990486);
+UI_LZ4_ASSET(ui_img_1313577400);
+UI_LZ4_ASSET(ui_img_1460433628);
+UI_LZ4_ASSET(ui_img_1713777493);
+UI_LZ4_ASSET(ui_img_174602179);
+UI_LZ4_ASSET(ui_img_1837598647);
+UI_LZ4_ASSET(ui_img_1863853840);
+UI_LZ4_ASSET(ui_img_2_png);
+UI_LZ4_ASSET(ui_img_2052261345);
+UI_LZ4_ASSET(ui_img_2096355461);
+UI_LZ4_ASSET(ui_img_322449093);
+UI_LZ4_ASSET(ui_img_38353654);
+UI_LZ4_ASSET(ui_img_444953556);
+UI_LZ4_ASSET(ui_img_503676461);
+UI_LZ4_ASSET(ui_img_558999578);
+UI_LZ4_ASSET(ui_img_61027324);
+UI_LZ4_ASSET(ui_img_795035558);
+UI_LZ4_ASSET(ui_img_881831439);
+UI_LZ4_ASSET(ui_img_938874969);
+UI_LZ4_ASSET(ui_img_acid_coagulant_png);
+UI_LZ4_ASSET(ui_img_add_ingredents_png);
+UI_LZ4_ASSET(ui_img_add_png);
+UI_LZ4_ASSET(ui_img_add_soybeans_png);
+UI_LZ4_ASSET(ui_img_back_high_png);
+UI_LZ4_ASSET(ui_img_back_png);
+UI_LZ4_ASSET(ui_img_bluetooth_png);
+UI_LZ4_ASSET(ui_img_check_coagulant_high_png);
+UI_LZ4_ASSET(ui_img_check_coagulant_png);
+UI_LZ4_ASSET(ui_img_check_continue_png);
+UI_LZ4_ASSET(ui_img_check_drip_tray_high_png);
+UI_LZ4_ASSET(ui_img_check_drip_tray_png);
+UI_LZ4_ASSET(ui_img_check_lid_high_png);
+UI_LZ4_ASSET(ui_img_check_lid_png);
+UI_LZ4_ASSET(ui_img_check_png);
+UI_LZ4_ASSET(ui_img_check_water_high_png);
+UI_LZ4_ASSET(ui_img_check_water_png);
+UI_LZ4_ASSET(ui_img_check1_png);
+UI_LZ4_ASSET(ui_img_clean_png);
+UI_LZ4_ASSET(ui_img_clock_png);
+UI_LZ4_ASSET(ui_img_coagulant_acid_highlight_png);
+UI_LZ4_ASSET(ui_img_coagulant_png);
+UI_LZ4_ASSET(ui_img_coagulant_select_png);
+UI_LZ4_ASSET(ui_img_collect_pulp_high_png);
+UI_LZ4_ASSET(ui_img_collect_pulp_png);
+UI_LZ4_ASSET(ui_img_content_png);
+UI_LZ4_ASSET(ui_img_continue_high_png);
+UI_LZ4_ASSET(ui_img_continue_png);
+UI_LZ4_ASSET(ui_img_countdown_png);
+UI_LZ4_ASSET(ui_img_extra_firm_png);
+UI_LZ4_ASSET(ui_img_filter_2_png);
+UI_LZ4_ASSET(ui_img_filter_png);
+UI_LZ4_ASSET(ui_img_firm_continue_png);
+UI_LZ4_ASSET(ui_img_firm_continuehigh_png);
+UI_LZ4_ASSET(ui_img_firm_png);
+UI_LZ4_ASSET(ui_img_firm_tofu__high_200g_png);
+UI_LZ4_ASSET(ui_img_firm_tofu__high200_png);
+UI_LZ4_ASSET(ui_img_firm_tofu_150_png);
+UI_LZ4_ASSET(ui_img_firm_tofu_200g_png);
+UI_LZ4_ASSET(ui_img_firm_tofu_high_100_png);
+UI_LZ4_ASSET(ui_img_firm_tofu_high_150_png);
+UI_LZ4_ASSET(ui_img_fit_filter_png);
+UI_LZ4_ASSET(ui_img_fit_mould_assembly_high_png);
+UI_LZ4_ASSET(ui_img_fit_mould_assembly_png);
+UI_LZ4_ASSET(ui_img_grey_png);
+UI_LZ4_ASSET(ui_img_high_png);
+UI_LZ4_ASSET(ui_img_homepage_png);
+UI_LZ4_ASSET(ui_img_hourglass_png);
+UI_LZ4_ASSET(ui_img_ingredient_png);
+UI_LZ4_ASSET(ui_img_ingredient_select_png);
+UI_LZ4_ASSET(ui_img_keep_making_normal_png);
+UI_LZ4_ASSET(ui_img_keep_making_png);
+UI_LZ4_ASSET(ui_img_lid_png);
+UI_LZ4_ASSET(ui_img_machinecoagulant_png);
+UI_LZ4_ASSET(ui_img_machinedriptray_png);
+UI_LZ4_ASSET(ui_img_machinelid_png);
+UI_LZ4_ASSET(ui_img_machinemould_png);
+UI_LZ4_ASSET(ui_img_machinepress_2_png);
+UI_LZ4_ASSET(ui_img_machinepress_high_png);
+UI_LZ4_ASSET(ui_img_machinepress_png);
+UI_LZ4_ASSET(ui_img_machinewatertank_png);
+UI_LZ4_ASSET(ui_img_making_png);
+UI_LZ4_ASSET(ui_img_making_stopped_clean_high_png);
+UI_LZ4_ASSET(ui_img_making_stoppedclean_png);
+UI_LZ4_ASSET(ui_img_making_tofu_png);
+UI_LZ4_ASSET(ui_img_medium_firm_png);
+UI_LZ4_ASSET(ui_img_milk_png);
+UI_LZ4_ASSET(ui_img_more_options_high_png);
+UI_LZ4_ASSET(ui_img_more_options_png);
+UI_LZ4_ASSET(ui_img_more_select_png);
+UI_LZ4_ASSET(ui_img_more_tofu_high_png);
+UI_LZ4_ASSET(ui_img_more_tofu_png);
+UI_LZ4_ASSET(ui_img_normal_png);
+UI_LZ4_ASSET(ui_img_ready_clean_high_png);
+UI_LZ4_ASSET(ui_img_ready_clean_png);
+UI_LZ4_ASSET(ui_img_ring3_png);
+UI_LZ4_ASSET(ui_img_segment_png);
+UI_LZ4_ASSET(ui_img_segments_png);
+UI_LZ4_ASSET(ui_img_setting_png);
+UI_LZ4_ASSET(ui_img_soft_png);
+UI_LZ4_ASSET(ui_img_start_making_high_png);
+UI_LZ4_ASSET(ui_img_start_making_png);
+UI_LZ4_ASSET(ui_img_stop_making_tofu_png);
+UI_LZ4_ASSET(ui_img_stop_png);
+UI_LZ4_ASSET(ui_img_stopping_png);
+UI_LZ4_ASSET(ui_img_tofu_png);
+UI_LZ4_ASSET(ui_img_wait_png);
+
+#undef UI_LZ4_ASSET
+
+#define ui_img_1_png ui_img_1_png_lz4
+#define ui_img_1036112462 ui_img_1036112462_lz4
+#define ui_img_1092992141 ui_img_1092992141_lz4
+#define ui_img_1195725596 ui_img_1195725596_lz4
+#define ui_img_1205051221 ui_img_1205051221_lz4
+#define ui_img_1272990486 ui_img_1272990486_lz4
+#define ui_img_1313577400 ui_img_1313577400_lz4
+#define ui_img_1460433628 ui_img_1460433628_lz4
+#define ui_img_1713777493 ui_img_1713777493_lz4
+#define ui_img_174602179 ui_img_174602179_lz4
+#define ui_img_1837598647 ui_img_1837598647_lz4
+#define ui_img_1863853840 ui_img_1863853840_lz4
+#define ui_img_2_png ui_img_2_png_lz4
+#define ui_img_2052261345 ui_img_2052261345_lz4
+#define ui_img_2096355461 ui_img_2096355461_lz4
+#define ui_img_322449093 ui_img_322449093_lz4
+#define ui_img_38353654 ui_img_38353654_lz4
+#define ui_img_444953556 ui_img_444953556_lz4
+#define ui_img_503676461 ui_img_503676461_lz4
+#define ui_img_558999578 ui_img_558999578_lz4
+#define ui_img_61027324 ui_img_61027324_lz4
+#define ui_img_795035558 ui_img_795035558_lz4
+#define ui_img_881831439 ui_img_881831439_lz4
+#define ui_img_938874969 ui_img_938874969_lz4
+#define ui_img_acid_coagulant_png ui_img_acid_coagulant_png_lz4
+#define ui_img_add_ingredents_png ui_img_add_ingredents_png_lz4
+#define ui_img_add_png ui_img_add_png_lz4
+#define ui_img_add_soybeans_png ui_img_add_soybeans_png_lz4
+#define ui_img_back_high_png ui_img_back_high_png_lz4
+#define ui_img_back_png ui_img_back_png_lz4
+#define ui_img_bluetooth_png ui_img_bluetooth_png_lz4
+#define ui_img_check_coagulant_high_png ui_img_check_coagulant_high_png_lz4
+#define ui_img_check_coagulant_png ui_img_check_coagulant_png_lz4
+#define ui_img_check_continue_png ui_img_check_continue_png_lz4
+#define ui_img_check_drip_tray_high_png ui_img_check_drip_tray_high_png_lz4
+#define ui_img_check_drip_tray_png ui_img_check_drip_tray_png_lz4
+#define ui_img_check_lid_high_png ui_img_check_lid_high_png_lz4
+#define ui_img_check_lid_png ui_img_check_lid_png_lz4
+#define ui_img_check_png ui_img_check_png_lz4
+#define ui_img_check_water_high_png ui_img_check_water_high_png_lz4
+#define ui_img_check_water_png ui_img_check_water_png_lz4
+#define ui_img_check1_png ui_img_check1_png_lz4
+#define ui_img_clean_png ui_img_clean_png_lz4
+#define ui_img_clock_png ui_img_clock_png_lz4
+#define ui_img_coagulant_acid_highlight_png ui_img_coagulant_acid_highlight_png_lz4
+#define ui_img_coagulant_png ui_img_coagulant_png_lz4
+#define ui_img_coagulant_select_png ui_img_coagulant_select_png_lz4
+#define ui_img_collect_pulp_high_png ui_img_collect_pulp_high_png_lz4
+#define ui_img_collect_pulp_png ui_img_collect_pulp_png_lz4
+#define ui_img_content_png ui_img_content_png_lz4
+#define ui_img_continue_high_png ui_img_continue_high_png_lz4
+#define ui_img_continue_png ui_img_continue_png_lz4
+#define ui_img_countdown_png ui_img_countdown_png_lz4
+#define ui_img_extra_firm_png ui_img_extra_firm_png_lz4
+#define ui_img_filter_2_png ui_img_filter_2_png_lz4
+#define ui_img_filter_png ui_img_filter_png_lz4
+#define ui_img_firm_continue_png ui_img_firm_continue_png_lz4
+#define ui_img_firm_continuehigh_png ui_img_firm_continuehigh_png_lz4
+#define ui_img_firm_png ui_img_firm_png_lz4
+#define ui_img_firm_tofu__high_200g_png ui_img_firm_tofu__high_200g_png_lz4
+#define ui_img_firm_tofu__high200_png ui_img_firm_tofu__high200_png_lz4
+#define ui_img_firm_tofu_150_png ui_img_firm_tofu_150_png_lz4
+#define ui_img_firm_tofu_200g_png ui_img_firm_tofu_200g_png_lz4
+#define ui_img_firm_tofu_high_100_png ui_img_firm_tofu_high_100_png_lz4
+#define ui_img_firm_tofu_high_150_png ui_img_firm_tofu_high_150_png_lz4
+#define ui_img_fit_filter_png ui_img_fit_filter_png_lz4
+#define ui_img_fit_mould_assembly_high_png ui_img_fit_mould_assembly_high_png_lz4
+#define ui_img_fit_mould_assembly_png ui_img_fit_mould_assembly_png_lz4
+#define ui_img_grey_png ui_img_grey_png_lz4
+#define ui_img_high_png ui_img_high_png_lz4
+#define ui_img_homepage_png ui_img_homepage_png_lz4
+#define ui_img_hourglass_png ui_img_hourglass_png_lz4
+#define ui_img_ingredient_png ui_img_ingredient_png_lz4
+#define ui_img_ingredient_select_png ui_img_ingredient_select_png_lz4
+#define ui_img_keep_making_normal_png ui_img_keep_making_normal_png_lz4
+#define ui_img_keep_making_png ui_img_keep_making_png_lz4
+#define ui_img_lid_png ui_img_lid_png_lz4
+#define ui_img_machinecoagulant_png ui_img_machinecoagulant_png_lz4
+#define ui_img_machinedriptray_png ui_img_machinedriptray_png_lz4
+#define ui_img_machinelid_png ui_img_machinelid_png_lz4
+#define ui_img_machinemould_png ui_img_machinemould_png_lz4
+#define ui_img_machinepress_2_png ui_img_machinepress_2_png_lz4
+#define ui_img_machinepress_high_png ui_img_machinepress_high_png_lz4
+#define ui_img_machinepress_png ui_img_machinepress_png_lz4
+#define ui_img_machinewatertank_png ui_img_machinewatertank_png_lz4
+#define ui_img_making_png ui_img_making_png_lz4
+#define ui_img_making_stopped_clean_high_png ui_img_making_stopped_clean_high_png_lz4
+#define ui_img_making_stoppedclean_png ui_img_making_stoppedclean_png_lz4
+#define ui_img_making_tofu_png ui_img_making_tofu_png_lz4
+#define ui_img_medium_firm_png ui_img_medium_firm_png_lz4
+#define ui_img_milk_png ui_img_milk_png_lz4
+#define ui_img_more_options_high_png ui_img_more_options_high_png_lz4
+#define ui_img_more_options_png ui_img_more_options_png_lz4
+#define ui_img_more_select_png ui_img_more_select_png_lz4
+#define ui_img_more_tofu_high_png ui_img_more_tofu_high_png_lz4
+#define ui_img_more_tofu_png ui_img_more_tofu_png_lz4
+#define ui_img_normal_png ui_img_normal_png_lz4
+#define ui_img_ready_clean_high_png ui_img_ready_clean_high_png_lz4
+#define ui_img_ready_clean_png ui_img_ready_clean_png_lz4
+#define ui_img_ring3_png ui_img_ring3_png_lz4
+#define ui_img_segment_png ui_img_segment_png_lz4
+#define ui_img_segments_png ui_img_segments_png_lz4
+#define ui_img_setting_png ui_img_setting_png_lz4
+#define ui_img_soft_png ui_img_soft_png_lz4
+#define ui_img_start_making_high_png ui_img_start_making_high_png_lz4
+#define ui_img_start_making_png ui_img_start_making_png_lz4
+#define ui_img_stop_making_tofu_png ui_img_stop_making_tofu_png_lz4
+#define ui_img_stop_png ui_img_stop_png_lz4
+#define ui_img_stopping_png ui_img_stopping_png_lz4
+#define ui_img_tofu_png ui_img_tofu_png_lz4
+#define ui_img_wait_png ui_img_wait_png_lz4
+
+#endif

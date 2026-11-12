@@ -1,0 +1,7 @@
+{
+  "stages": [
+    {"temperature_below_c": 60, "heater_gear": 14, "heater_on_seconds": 1, "heater_off_seconds": 0, "motor_gear": 1, "motor_on_seconds": 3, "motor_off_seconds": 0.5},
+    {"temperature_below_c": 95, "heater_gear": 14, "heater_on_seconds": 1, "heater_off_seconds": 0, "motor_gear": 1, "motor_on_seconds": 3, "motor_off_seconds": 0.5},
+    {"temperature_below_c": 100, "heater_gear": 8, "heater_on_seconds": 1, "heater_off_seconds": 0, "motor_gear": 1, "motor_on_seconds": 3, "motor_off_seconds": 0.5}
+  ]
+}
